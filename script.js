@@ -574,7 +574,7 @@ function applyOfficerIdentity(email) {
                 qrContainer.innerHTML = ""; 
                 // Ganti dengan link website Anda nanti jika sudah di-hosting (misal di Vercel/Github)
 // Untuk sementara saat testing di komputer, gunakan link Live Server Anda (biasanya http://127.0.0.1:5500)
-                const domainWebsite = "http://127.0.0.1:5500"; 
+                const domainWebsite = "https://administrasi-icarus.vercel.app/"; 
                 const qrText = `${domainWebsite}/verify.html?id=${reg}`;
                 
                 new QRCode(qrContainer, {
