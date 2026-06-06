@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verifikasi Lisensi Icarus</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: #0f172a; /* Warna Biru Navy khas desain Anda */
+            color: #cbd5e1;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .verify-card {
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            border: 2px solid #3b82f6;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 420px;
+            padding: 30px 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8), inset 0 0 20px rgba(59, 130, 246, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Garis Emas di Atas */
+        .verify-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px;
+            background: linear-gradient(90deg, transparent, #fbbf24, transparent);
+        }
+
+        .header { text-align: center; margin-bottom: 25px; }
+        .header h1 { color: #fbbf24; font-family: 'Cinzel', serif; font-size: 22px; letter-spacing: 2px; margin-bottom: 5px; text-shadow: 0 2px 10px rgba(251, 191, 36, 0.4); }
+        .header p { color: #94a3b8; font-size: 11px; font-weight: 700; letter-spacing: 2px; }
+
+        /* Tampilan Loading */
+        #loadingPanel { text-align: center; padding: 40px 0; }
+        #loadingPanel i { color: #3b82f6; font-size: 40px; margin-bottom: 15px; }
+
+        /* Status Badge */
+        .status-badge { text-align: center; padding: 15px; border-radius: 8px; font-weight: 900; font-size: 18px; letter-spacing: 2px; margin-bottom: 25px; text-transform: uppercase; box-shadow: inset 0 0 15px rgba(0,0,0,0.3); }
+        .status-valid { background: rgba(34, 197, 94, 0.15); color: #22c55e; border: 1px solid #22c55e; box-shadow: 0 0 20px rgba(34, 197, 94, 0.2); }
+        .status-revoked { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid #ef4444; box-shadow: 0 0 20px rgba(239, 68, 68, 0.2); }
+        .status-expired { background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid #f59e0b; box-shadow: 0 0 20px rgba(245, 158, 11, 0.2); }
+        .status-error { background: rgba(239, 68, 68, 0.1); color: #f87171; border: 1px dashed #f87171; }
+
+        .data-row { margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 12px; }
+        .data-row:last-child { border-bottom: none; }
+        .data-label { color: #64748b; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+        .data-value { color: #ffffff; font-size: 16px; font-weight: 800; text-transform: uppercase; }
+        .data-value.highlight { color: #fbbf24; font-size: 18px; }
+
+        .footer-note { text-align: center; margin-top: 30px; font-size: 10px; color: #475569; font-weight: 600; letter-spacing: 1px; }
+    </style>
+</head>
+<body>
+
+    <div class="verify-card">
+        <div class="header">
+            <h1>ICARUS x PEGASUS</h1>
+            <p>SISTEM VERIFIKASI LISENSI</p>
+        </div>
+
+        <div id="loadingPanel">
+            <i class="fas fa-circle-notch fa-spin"></i>
+            <p style="color: #94a3b8; font-weight: bold;">Mencari Data di Server...</p>
+        </div>
+
+        <div id="resultPanel" style="display: none;">
+            <div id="statusBadge" class="status-badge status-valid">
+                <i class="fas fa-check-circle"></i> LISENSI AKTIF
+            </div>
+
+            <div class="data-row">
+                <div class="data-label">NOMOR REGISTRASI</div>
+                <div class="data-value highlight" id="valReg">-</div>
+            </div>
+
+            <div class="data-row">
+                <div class="data-label">NAMA LENGKAP</div>
+                <div class="data-value" id="valNama">-</div>
+            </div>
+
+            <div style="display: flex; gap: 15px;">
+                <div class="data-row" style="flex: 1;">
+                    <div class="data-label">PEKERJAAN</div>
+                    <div class="data-value" id="valKerja">-</div>
+                </div>
+                <div class="data-row" style="flex: 1;">
+                    <div class="data-label">IMO RATING</div>
+                    <div class="data-value" style="color: #3b82f6;" id="valImo">-</div>
+                </div>
+            </div>
+
+            <div class="data-row">
+                <div class="data-label">JABATAN</div>
+                <div class="data-value" id="valJabatan">-</div>
+            </div>
+
+            <div class="data-row">
+                <div class="data-label">MASA BERLAKU</div>
+                <div class="data-value" id="valExp">-</div>
+            </div>
+            
+            <div class="data-row">
+                <div class="data-label">TANGGAL TERBIT & PETUGAS</div>
+                <div class="data-value" style="font-size: 12px; color: #94a3b8;"><span id="valIssue"></span> | <span id="valPetugas"></span></div>
+            </div>
+        </div>
+
+        <div id="errorPanel" style="display: none; text-align: center; padding: 20px 0;">
+            <div class="status-badge status-error">
+                <i class="fas fa-times-circle"></i> TIDAK DITEMUKAN
+            </div>
+            <p style="color: #94a3b8; font-size: 13px; line-height: 1.5;">Data lisensi ini tidak terdaftar di database administrasi atau merupakan dokumen palsu.</p>
+        </div>
+
+        <div class="footer-note">
+            END-TO-END ENCRYPTED • INDOPRIDE REGION
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    
+    <script>
+        // Konfigurasi Database Icarus MDT
+        const firebaseConfig = {
+            apiKey: "AIzaSyDL_HQg1bW8YxCXfO0wXl_ml7F_NZ4aY4M",
+            authDomain: "mdticarus.firebaseapp.com",
+            databaseURL: "https://mdticarus-default-rtdb.asia-southeast1.firebasedatabase.app", 
+            projectId: "mdticarus",
+            storageBucket: "mdticarus.firebasestorage.app",
+            messagingSenderId: "801443192872",
+            appId: "1:801443192872:web:2625b29109402794e2551d"
+        };
+
+        if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
+        const database = firebase.database();
+
+        // Ambil ID dari URL (Misal: verify.html?id=PL-1007)
+        const urlParams = new URLSearchParams(window.location.search);
+        const searchId = urlParams.get('id');
+
+        const loadingPanel = document.getElementById('loadingPanel');
+        const resultPanel = document.getElementById('resultPanel');
+        const errorPanel = document.getElementById('errorPanel');
+
+        // Fungsi ngecek tanggal expired
+        function isExpired(dateStr) {
+            if(!dateStr || dateStr === "-") return false;
+            const indexBulan = {"JANUARI":0, "FEBRUARI":1, "MARET":2, "APRIL":3, "MEI":4, "JUNI":5, "JULI":6, "AGUSTUS":7, "SEPTEMBER":8, "OKTOBER":9, "NOVEMBER":10, "DESEMBER":11};
+            const parts = dateStr.toUpperCase().split(" ");
+            if(parts.length === 3) {
+                const expDate = new Date(parseInt(parts[2]), indexBulan[parts[1]], parseInt(parts[0]));
+                const today = new Date(); today.setHours(0,0,0,0);
+                return expDate < today; 
+            }
+            return false;
+        }
+
+        if (!searchId) {
+            loadingPanel.style.display = 'none';
+            errorPanel.style.display = 'block';
+        } else {
+            // Tarik data lisensi dari Firebase
+            database.ref('licenses/' + searchId).once('value').then((snapshot) => {
+                loadingPanel.style.display = 'none';
+
+                if (snapshot.exists()) {
+                    const data = snapshot.val();
+                    resultPanel.style.display = 'block';
+
+                    // Isi Data Teks
+                    document.getElementById('valReg').innerText = searchId;
+                    document.getElementById('valNama').innerText = data.nama || "-";
+                    document.getElementById('valKerja').innerText = data.pekerjaan || "-";
+                    document.getElementById('valImo').innerText = data.imo || "-";
+                    document.getElementById('valJabatan').innerText = data.jabatan || "-";
+                    document.getElementById('valExp').innerText = data.expired || "-";
+                    document.getElementById('valIssue').innerText = data.issueDate || "-";
+                    document.getElementById('valPetugas').innerText = data.petugas || "-";
+
+                    // Atur Lencana Status (Aktif / Expired / Revoked)
+                    const statusBadge = document.getElementById('statusBadge');
+                    const expired = isExpired(data.expired);
+
+                    if (data.status === "REVOKED") {
+                        statusBadge.className = 'status-badge status-revoked';
+                        statusBadge.innerHTML = '<i class="fas fa-ban"></i> LISENSI DICABUT (REVOKED)';
+                    } else if (expired) {
+                        statusBadge.className = 'status-badge status-expired';
+                        statusBadge.innerHTML = '<i class="fas fa-exclamation-triangle"></i> LISENSI EXPIRED';
+                    } else {
+                        statusBadge.className = 'status-badge status-valid';
+                        statusBadge.innerHTML = '<i class="fas fa-check-circle"></i> LISENSI AKTIF';
+                    }
+                } else {
+                    errorPanel.style.display = 'block';
+                }
+            }).catch((error) => {
+                console.error(error);
+                loadingPanel.innerHTML = '<p style="color:#ef4444;">Gagal Terhubung ke Database.</p>';
+            });
+        }
+    </script>
+</body>
+</html>

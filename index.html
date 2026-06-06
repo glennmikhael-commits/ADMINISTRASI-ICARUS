@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICARUS Official MDT System</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&display=swap" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script> 
+    
+    <script src="https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.4.3/dist/imgly-background-removal.js" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="loginScreen" class="login-wrapper">
+        <div class="login-box">
+            <img src="LGO ICARUS HD.png" alt="Logo" style="width: 150px; margin-bottom: 15px;">
+            <h2 style="color: #fbbf24; margin-bottom: 20px; font-size: 18px; letter-spacing: 1px;">PORTAL ADMINISTRASI ICARUS</h2>
+            
+            <input type="email" id="loginEmail" placeholder="Email Petugas @icarus.com" class="login-input">
+            <input type="password" id="loginPassword" placeholder="Password" class="login-input">
+            <button id="btnLogin" class="btn-simpan">MASUK SISTEM</button>
+            <p id="loginError" style="color: #ff4d4d; font-size: 12px; margin-top: 10px; display: none;"></p>
+        </div>
+
+        <div class="login-footer">
+            <div class="footer-links">
+                <a href="#" id="linkAbout">Tentang Kami</a>
+                <a href="https://discord.com/users/1461376008858108068" target="_blank">
+                    <i class="fab fa-discord"></i> Hubungi Kami
+                </a>
+                <a href="https://www.tiktok.com/@icarus_idp" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
+            </div>
+            <div class="footer-copyright">
+                &copy; 2026 Copyright by Ordo Icarus - Indopride. All Rights Reserved. This system is owned and operated by Icarus Sheriff Roxwood.
+            </div>
+        </div>
+    </div>
+
+    <div id="aboutModal" class="about-modal">
+        <div class="about-content">
+            <span class="close-about" id="closeAbout">&times;</span>
+            <div style="text-align: center; margin-bottom: 20px;">
+                <img src="logo-icarus.png" alt="Icarus" style="width: 80px;">
+                <h2 style="color: #fbbf24; margin-top: 10px; font-family: 'Cinzel', serif; font-weight: 900; letter-spacing: 2px;">ORDO ICARUS</h2>
+            </div>
+            
+            <p style="color: #cbd5e1; font-size: 13px; line-height: 1.6; text-align: justify; margin-bottom: 20px; font-family: 'Inter', sans-serif;">
+                <b>Ordo Icarus</b> adalah salah satu ordo resmi di bawah struktur SHERIFF ROXWOOD INDOPRIDE yang dibentuk untuk menjalankan fungsi pengamanan, pengawasan, serta penegakan ketertiban di wilayah laut dan udara Roxwood, sebagai bagian yang tidak terpisahkan dari wilayah Indopride.
+            </p>
+
+            <h3 style="color: #fff; font-size: 12px; margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 5px;">DOKUMENTASI KEGIATAN</h3>
+            <div class="about-gallery">
+                <div class="gallery-item">
+                    <img src="https://media.discordapp.net/attachments/1474186524747894919/1509046610653347910/ica_2.png?ex=6a17c0ac&is=6a166f2c&hm=97c0a317a52aec5c28b7ef098943047c88a5fccb8f06ccd782f0247cf64226e0&=&format=webp&quality=lossless&width=1510&height=850" alt="Patroli Udara Rutin">
+                    <div class="gallery-caption">Patroli Udara Rutin</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://media.discordapp.net/attachments/1474186524747894919/1509046609202118736/ica4.png?ex=6a17c0ac&is=6a166f2c&hm=c5cf5adb1c75829eec28146ae0bcc73909c96b8e99976b276e87446e4b03f914&=&format=webp&quality=lossless&width=1510&height=850" alt="Patroli Laut Rutin">
+                    <div class="gallery-caption">Patroli Laut Rutin</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://media.discordapp.net/attachments/1474186524747894919/1509047003190005870/ica_3.png?ex=6a17c10a&is=6a166f8a&hm=5040485edf41e2e4cb628b64ea7722246225331dd7d4a02c1e46b2ebf8a62c6d&=&format=webp&quality=lossless&width=1418&height=850" alt="Pembaretan">
+                    <div class="gallery-caption">Upacara Pembaretan</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://media.discordapp.net/attachments/1463968885677228032/1507600345960939702/FiveM_GTAProcess_2026-05-23_13-06-29_092.png?ex=6a171afc&is=6a15c97c&hm=df87a7e9de121b38a9f8ebc3bb6d7d345ca07aa116de11a4ddf6296ec69ed956&=&format=webp&quality=lossless&width=1511&height=850" alt="Pelatihan">
+                    <div class="gallery-caption">Pelatihan Penerbangan</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="mainApp" class="vigilis-dashboard" style="display: none;">
+        
+        <aside class="v-sidebar" id="sidebar">
+            <div class="v-sidebar-header">
+                <div class="header-text">
+                    <h1 style="color: #fbbf24; font-size: 24px; font-weight: 900; letter-spacing: 2px;">ICARUS</h1>
+                    <p style="font-size: 9px; color: #94a3b8; font-weight: 700; letter-spacing: 3px;">ADMINISTRASI</p>
+                </div>
+                <div class="hamburger" id="hamburgerBtn" onclick="toggleSidebar()">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+
+            <div class="v-sidebar-menu">
+                <div class="menu-label">DASHBOARD UTAMA</div>
+                <a href="#" class="menu-item active" onclick="switchPage('pageDashboard', this)">
+                    <i class="fas fa-id-badge"></i> <span class="menu-text">PROFIL OFFICER</span>
+                </a>
+
+                <div class="menu-label" style="margin-top: 25px;">DATA ICARUS</div>
+                <a href="#" class="menu-item" onclick="switchPage('pageGenerator', this)">
+                    <i class="fas fa-anchor"></i> <span class="menu-text">PEMBUATAN LISENSI PELAUT</span>
+                </a>
+                <a href="#" class="menu-item" onclick="switchPage('pageDatabasePelaut', this)">
+                    <i class="fas fa-database"></i> <span class="menu-text">DATABASE LISENSI PELAUT</span>
+                </a>
+                <a href="#" class="menu-item" onclick="switchPage('pageLisensiPenerbang', this)">
+                    <i class="fas fa-id-badge"></i> <span class="menu-text">PEMBUATAN LISENSI PENERBANG</span>
+                </a>
+                <a href="#" class="menu-item" onclick="switchPage('pageDatabasePenerbang', this)">
+                    <i class="fas fa-server"></i> <span class="menu-text">DATABASE LISENSI PENERBANG</span>
+                </a>
+                <a href="#" class="menu-item" onclick="switchPage('pagePlatHeli', this)">
+                    <i class="fas fa-helicopter"></i> <span class="menu-text">DATA REGISTRASI HELIKOPTER</span>
+                </a>
+                <a href="#" class="menu-item" onclick="switchPage('pageLaporan2Minggu', this)">
+                    <i class="fas fa-calendar-alt"></i> <span class="menu-text">DATA LAPORAN TERAKHIR</span>
+                </a>
+                <a href="#" class="menu-item" onclick="switchPage('pageGiatIcarus', this)">
+                    <i class="fas fa-clipboard-list"></i> <span class="menu-text">PEMBUATAN LAPOR GIAT</span>
+                </a>               
+                <a href="#" class="menu-item" onclick="switchPage('pagePenyitaan', this)">
+                    <i class="fas fa-boxes"></i> <span class="menu-text">DATA PENYITAAN</span>
+                </a>
+                <a href="#" class="menu-item" onclick="switchPage('pagePenilangan', this)">
+                    <i class="fas fa-gavel"></i> <span class="menu-text">DATA PENILANGAN</span>
+                </a>
+                <a href="#" class="menu-item" onclick="switchPage('pageProgressAnggota', this)">
+                    <i class="fas fa-hourglass-half"></i> <span class="menu-text">PROGESS ANGGOTA</span>
+                </a>
+                <a href="#" class="menu-item" onclick="switchPage('pageMilestone', this)">
+                    <i class="fas fa-trophy"></i> <span class="menu-text">MILESTONE</span>
+                </a>
+
+                <div class="menu-label" id="labelPimpinan" style="margin-top: 25px; display: none;">KONTROL ARSIP PUSAT</div>
+                <a href="#" class="menu-item" id="menuStatistik" onclick="switchPage('pageStatistik', this)" style="display: none;">
+                    <i class="fas fa-chart-line"></i> <span class="menu-text">STATISTIK KINERJA</span>
+                </a>
+                <a href="#" class="menu-item" id="menuAudit" onclick="switchPage('pageAudit', this)" style="display: none;">
+                    <i class="fas fa-history"></i> <span class="menu-text">LOG AKTIVITAS PETUGAS</span>
+                </a>
+            </div>
+
+            <div class="v-sidebar-bottom">
+                <div class="menu-label">PENGATURAN AKUN</div>
+                <div class="hide-on-collapse">
+                    <input type="password" id="inputNewPassword" placeholder="Password Baru" class="v-input-dark" style="margin-bottom: 8px;">
+                    <button id="btnUpdatePass" class="v-btn-outline"><i class="fas fa-key"></i> GANTI PASSWORD</button>
+                </div>
+                <button id="btnLogout" class="v-btn-outline v-btn-danger" style="margin-top: 15px;" title="Logout">
+                    <i class="fas fa-sign-out-alt"></i> <span class="menu-text">LOGOUT AKUN</span>
+                </button>
+                <div class="sidebar-copyright hide-on-collapse">
+                    &copy; 2026 ICARUS <br>ALL RIGHTS RESERVED
+                </div>
+            </div>
+        </aside>
+
+        <main class="v-main-content">
+            
+            <div class="v-topbar">
+                <div class="topbar-time" style="display: flex; align-items: center; gap: 15px;">
+                    <div style="display: flex; align-items: center;">
+                        <i class="fas fa-clock" style="margin-right: 6px; color: #fbbf24; opacity: 0.8;"></i> 
+                        <span id="realtimeClock" style="font-family: 'Cinzel', serif; font-size: 16px; font-weight: 900; color: #fbbf24; letter-spacing: 2px;">00:00:00 WIB</span>
+                    </div>
+                    <span style="color: #94a3b8; font-style: italic; font-size: 11px; letter-spacing: 1px; border-left: 1px solid rgba(255,255,255,0.15); padding-left: 15px; font-weight: 600;">
+                        "Demi Sayap yang Kami Pilih Sendiri"
+                    </span>
+                </div>
+
+                <div class="topbar-info">
+                    <i class="fas fa-user-shield" style="color: #fbbf24;"></i>
+                    <span style="color: #cbd5e1; font-size: 12px; font-weight: 700;">OFFICER STATUS: <span id="displayOfficer" style="color: #22c55e;">AKTIF</span></span>
+                </div>
+            </div>
+
+            <div class="v-app-window">
+                <div class="v-window-header">
+                    <div class="window-title">ICARUS SECURE NETWORK SYSTEM</div>
+                    <div class="window-dots">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                </div>
+
+                <div class="v-window-body">
+                    
+                    <div id="pageDashboard" class="page-section active single-pane">
+                        <h2 class="page-title"><i class="fas fa-shield-alt"></i> IDENTITAS & STATUS OFFICER</h2>
+                        <p class="page-desc">Ringkasan profil, status penugasan, dan akumulasi poin keaktifan Anda di dalam Ordo Icarus & Pegasus.</p>
+
+                        <div class="profile-container" style="display: flex; gap: 25px; flex-wrap: wrap; margin-top: 20px;">
+                            <div style="flex: 1; min-width: 300px; background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.95)); border: 1px solid rgba(251, 191, 36, 0.2); border-radius: 12px; padding: 30px; box-shadow: 0 15px 30px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 20px;">
+                                <div style="position: relative; width: 120px; height: 120px; border-radius: 12px; border: 2px solid #fbbf24; overflow: hidden; box-shadow: 0 0 15px rgba(251, 191, 36, 0.3); background: #0f172a;">
+                                    <img src="https://ui-avatars.com/api/?name=Officer&background=0D8ABC&color=fff&size=150" alt="Foto Profil" id="dashFoto" style="width: 100%; height: 100%; object-fit: cover;">
+                                    <div style="position: absolute; bottom: 0; width: 100%; background: rgba(0,0,0,0.8); color: #fbbf24; font-size: 10px; text-align: center; padding: 5px 0; font-weight: 900; letter-spacing: 1px;">VERIFIED</div>
+                                </div>
+                                <div style="flex: 1;">
+                                    <h4 style="color: #94a3b8; font-size: 11px; font-weight: 700; letter-spacing: 1px; margin: 0 0 5px 0;">CALLSIGN PETUGAS</h4>
+                                    <h1 id="dashCallsign" style="color: #fbbf24; font-size: 32px; font-weight: 900; margin: 0 0 12px 0; font-family: 'Cinzel', serif; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">VP-00</h1>
+                                    <div style="display: grid; grid-template-columns: 1fr; gap: 10px;">
+                                        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 6px;">
+                                            <span style="color: #64748b; font-size: 11px; font-weight: bold;">NAMA LENGKAP:</span>
+                                            <span id="dashNama" style="color: #fff; font-size: 12px; font-weight: 900; text-transform: uppercase;">UNKNOWN</span>
+                                        </div>
+                                        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 6px;">
+                                            <span style="color: #64748b; font-size: 11px; font-weight: bold;">AFILIASI UNIT:</span>
+                                            <span id="dashUnitDetail" style="color: #38bdf8; font-size: 12px; font-weight: 900;">UNKNOWN</span>
+                                        </div>
+                                        <div style="display: flex; justify-content: space-between;">
+                                            <span style="color: #64748b; font-size: 11px; font-weight: bold;">STATUS PENUGASAN:</span>
+                                            <span id="dashStatus" style="color: #22c55e; font-size: 12px; font-weight: 900;"><i class="fas fa-check-circle"></i> AKTIF</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="flex: 1; min-width: 300px; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 25px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; box-shadow: inset 0 0 20px rgba(0,0,0,0.5);">
+                                <i class="fas fa-star" style="font-size: 35px; color: #fbbf24; margin-bottom: 12px; text-shadow: 0 0 20px rgba(251,191,36,0.6);"></i>
+                                <h3 style="color: #94a3b8; font-size: 12px; font-weight: 800; letter-spacing: 1px; margin-bottom: 5px;">TOTAL POIN KEAKTIFAN SAYA</h3>
+                                <div style="display: flex; align-items:Baseline; gap: 8px;">
+                                    <div id="dashPoin" style="font-size: 55px; font-weight: 900; color: #fff; line-height: 1;">0</div>
+                                    <span style="color: #fbbf24; font-size: 16px; font-weight: bold; margin-bottom: 10px;">PTS</span>
+                                </div>
+                                <p style="color: #64748b; font-size: 11px; margin-top: 15px; line-height: 1.4; max-width: 80%;">Poin diakumulasikan otomatis dari evaluasi Pimpinan. Tingkatkan poin Anda untuk memenuhi syarat promosi pangkat.</p>
+                            </div>
+                        </div>
+                        <div style="margin-top: 25px; padding: 20px 25px; background: rgba(59, 130, 246, 0.1); border-left: 4px solid #3b82f6; border-radius: 0 8px 8px 0;">
+                            <p style="color: #cbd5e1; font-size: 13px; font-style: italic; line-height: 1.6; margin: 0;">
+                                "Selamat datang kembali di Pusat Komando MDT, Officer. Jangan lupa memeriksa misi harian Anda pada menu Milestone Baju Baru dan pastikan seluruh kegiatan patroli Anda terekam dalam Lapor Giat."
+                            </p>
+                        </div>
+                    </div>
+
+                    <div id="pageMilestone" class="page-section single-pane">
+                        <h2 class="page-title"><i class="fas fa-trophy"></i> MILESTONE SERAGAM BARU ICARUS</h2>
+                        <p class="page-desc">Sistem pelacakan misi keaktifan individu secara real-time untuk mendapatkan otorisasi penggunaan Set Baju Icarus terbaru.</p>
+                        
+                        <div class="stats-grid" style="margin-bottom: 25px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                            <div class="stat-card" style="border-left: 4px solid #0ea5e9; background: rgba(15, 23, 42, 0.5); padding: 20px; border-radius: 8px;">
+                                <div style="display: flex; align-items: center; gap: 15px;">
+                                    <div class="stat-icon-wrapper" style="background: rgba(14, 165, 233, 0.15); color: #0ea5e9; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-size: 20px;"><i class="fas fa-plane"></i></div>
+                                    <div class="stat-info" style="flex: 1;">
+                                        <h3 style="font-size: 11px; color: #94a3b8; font-weight: 700; margin: 0; letter-spacing: 0.5px;">MISI PENERBANGAN UDARA</h3>
+                                        <p id="msUdaraPoin" style="font-size: 22px; font-weight: 900; color: #fff; margin: 4px 0;">36 / 80 Giat</p>
+                                        <span id="msUdaraKurang" style="font-size: 11px; color: #ef4444; font-weight: 700;"><i class="fas fa-exclamation-circle"></i> MASI KURANG 44 P</span>
+                                        <div style="width: 100%; height: 6px; background: rgba(0,0,0,0.4); border-radius: 4px; margin-top: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
+                                            <div id="barMsUdara" style="width: 45%; height: 100%; background: linear-gradient(90deg, #0ea5e9, #38bdf8); border-radius: 4px; transition: 0.5s;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="stat-card" style="border-left: 4px solid #3b82f6; background: rgba(15, 23, 42, 0.5); padding: 20px; border-radius: 8px;">
+                                <div style="display: flex; align-items: center; gap: 15px;">
+                                    <div class="stat-icon-wrapper" style="background: rgba(59, 130, 246, 0.15); color: #3b82f6; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-size: 20px;"><i class="fas fa-anchor"></i></div>
+                                    <div class="stat-info" style="flex: 1;">
+                                        <h3 style="font-size: 11px; color: #94a3b8; font-weight: 700; margin: 0; letter-spacing: 0.5px;">MISI PATROLI LAUT</h3>
+                                        <p id="msLautPoin" style="font-size: 22px; font-weight: 900; color: #fff; margin: 4px 0;">49 / 100 Giat</p>
+                                        <span id="msLautKurang" style="font-size: 11px; color: #ef4444; font-weight: 700;"><i class="fas fa-exclamation-circle"></i> MASI KURANG 51 P</span>
+                                        <div style="width: 100%; height: 6px; background: rgba(0,0,0,0.4); border-radius: 4px; margin-top: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
+                                            <div id="barMsLaut" style="width: 49%; height: 100%; background: linear-gradient(90deg, #3b82f6, #60a5fa); border-radius: 4px; transition: 0.5s;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="stat-card" style="border-left: 4px solid #eab308; background: rgba(15, 23, 42, 0.5); padding: 20px; border-radius: 8px;">
+                                <div style="display: flex; align-items: center; gap: 15px;">
+                                    <div class="stat-icon-wrapper" style="background: rgba(234, 179, 8, 0.15); color: #eab308; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-size: 20px;"><i class="fas fa-id-card"></i></div>
+                                    <div class="stat-info" style="flex: 1;">
+                                        <h3 style="font-size: 11px; color: #94a3b8; font-weight: 700; margin: 0; letter-spacing: 0.5px;">MISI PROSES LISENSI</h3>
+                                        <p id="msLisensiPoin" style="font-size: 22px; font-weight: 900; color: #fff; margin: 4px 0;">40 / 150 Giat</p>
+                                        <span id="msLisensiKurang" style="font-size: 11px; color: #ef4444; font-weight: 700;"><i class="fas fa-exclamation-circle"></i> MASI KURANG 110 P</span>
+                                        <div style="width: 100%; height: 6px; background: rgba(0,0,0,0.4); border-radius: 4px; margin-top: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
+                                            <div id="barMsLisensi" style="width: 26.6%; height: 100%; background: linear-gradient(90deg, #eab308, #fde047); border-radius: 4px; transition: 0.5s;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.4), rgba(15, 23, 42, 0.8)); border: 1px solid rgba(251, 191, 36, 0.15); padding: 35px; border-radius: 12px; text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,0.6); backdrop-filter: blur(10px); margin-top: 25px;">
+                            <div class="uniform-reward-container" style="position: relative; width: 150px; height: 150px; margin: 0 auto 20px auto; display: flex; align-items: center; justify-content: center;">
+                                <div class="glowing-ring" style="position: absolute; width: 100%; height: 100%; border-radius: 50%; border: 3px solid rgba(251, 191, 36, 0.3); box-shadow: 0 0 20px rgba(251, 191, 36, 0.2); transition: 0.5s;"></div>
+                                <img src="seragam-icarus-v2.png" id="msRewardItemPhoto" alt="Target Uniform" class="uniform-photo locked" style="height: 140px; width: auto; object-fit: contain; position: relative; z-index: 2; transition: 0.5s all ease-in-out; filter: grayscale(100%) brightness(0.7); opacity: 0.8;">
+                                <div id="msLockOverlay" style="position: absolute; bottom: 5px; right: 5px; background: #ef4444; color: #fff; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; border: 3px solid #0f172a; z-index: 3; transition: 0.5s;"><i class="fas fa-lock"></i></div>
+                            </div>
+                            <h3 style="color: #fff; font-size: 18px; font-weight: 900; letter-spacing: 1px; margin-bottom: 8px; font-family: 'Inter', sans-serif;">SET BAJU ICARUS TERBARU</h3>
+                            <p style="color: #94a3b8; font-size: 12px; max-width: 500px; margin: 0 auto 20px auto; line-height: 1.5;">Selesaikan persyaratan kuota laporan penerbangan udara, penyisiran patroli laut, serta pengarsipan pembuatan lisensi administrasi untuk membuka hak klaim seragam baru.</p>
+                            <div id="msRewardBadge" style="display: inline-block; background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); padding: 8px 24px; border-radius: 30px; font-weight: 900; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; transition: 0.5s;">STATUS: LOCKED - BELUM MEMENUHI SYARAT</div>
+                        </div>
+                    </div>
+
+                    <div id="pagePlatHeli" class="page-section single-pane">
+                        <h2 class="page-title"><i class="fas fa-helicopter"></i> DATA REGISTRASI HELIKOPTER</h2>
+                        <p class="page-desc">Database pencatatan registrasi nomor plat (Tail Number) serta status helikopter Ordo Icarus dan Pegasus.</p>
+
+                        <div style="background: rgba(15, 23, 42, 0.6); padding: 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 25px;">
+                            <h3 style="color: #fbbf24; font-size: 12px; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px;">[+] REGISTRASI HELIKOPTER BARU</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>NOMOR PLAT</label>
+                                    <input type="text" id="inputPlatHeli" class="v-input-dark" placeholder="Contoh: Q 503 XE">
+                                </div>
+                                <div class="form-group">
+                                    <label>MODEL HELIKOPTER</label>
+                                    <select id="inputModelHeli" class="v-input-dark">
+                                        <option value="BO-105">BO-105 (Heli Capung)</option>
+                                        <option value="AW-189">AW-189 (Heli Predator)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>AFILIASI</label>
+                                    <select id="inputUnitHeli" class="v-input-dark">
+                                        <option value="ORDO ICARUS">ORDO ICARUS</option>
+                                        <option value="UNIT PEGASUS">UNIT PEGASUS</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>STATUS HELIKOPTER</label>
+                                    <select id="inputStatusHeli" class="v-input-dark">
+                                        <option value="AKTIF">SIAP TERBANG (AKTIF)</option>
+                                        <option value="MAINTENANCE">DALAM PERAWATAN (MAINTENANCE)</option>
+                                        <option value="GROUNDED">DILARANG TERBANG (GROUNDED)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group full-width" style="margin-top: 5px;">
+                                <label>NAMA PEMILIK / PENANGGUNG JAWAB</label>
+                                <input type="text" id="inputPemilikHeli" class="v-input-dark" placeholder="Masukkan Nama Pemilik atau Pilot Utama">
+                            </div>
+
+                            <button id="btnSimpanPlat" class="v-btn-action" style="padding: 12px; width: 100%; margin-top: 15px; background: #10b981;"><i class="fas fa-save"></i> SIMPAN DATA HELIKOPTER</button>
+                        </div>
+                        <div class="db-controls" style="margin-top: 10px; margin-bottom: 15px;">
+                            <input type="text" id="inputSearchArmada" class="v-input-dark" placeholder="Cari Tail Number / Model / Pemilik..." style="flex:1; border-color: rgba(251, 191, 36, 0.4);">
+                        </div>
+                        <table class="v-table">
+                            <thead>
+                                <tr>
+                                    <th>TAIL NUMBER</th>
+                                    <th>MODEL HELIKOPTER</th>
+                                    <th>PEMILIK</th> 
+                                    <th>AFILIASI</th>
+                                    <th>STATUS TERAKHIR</th>
+                                    <th>AKSES</th>
+                                </tr>
+                            </thead>
+                            <tbody id="platTableBody">
+                                <tr><td colspan="6" style="text-align:center; padding: 30px; color: #64748b;">Memuat database helikopter ...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="pageLaporan2Minggu" class="page-section single-pane">
+                        <h2 class="page-title"><i class="fas fa-calendar-alt"></i> DATA LAPORAN TERAKHIR (ARSIP GIAT)</h2>
+                        <p class="page-desc">Rekapitulasi terpusat dari seluruh data operasional, penertiban wilayah, dan akumulasi Lapor Giat seluruh anggota icarus.</p>
+                        
+                        <div class="db-controls">
+                            <input type="text" id="inputSearchGiat" class="v-input-dark" placeholder="Cari Nama Petugas / Jenis Giat / Lokasi / Keterangan..." style="flex:1; border-color: rgba(251, 191, 36, 0.4);">
+                            <button id="btnExportCSVGiat" class="v-btn-action" style="background: #eab308; color: #000; padding: 10px 20px;"><i class="fas fa-file-excel"></i> DOWNLOAD REKAPAN (.CSV)</button>
+                        </div>
+
+                        <table class="v-table" style="font-size:11px;">
+                            <thead>
+                                <tr>
+                                    <th>WAKTU & TANGGAL</th>
+                                    <th>PETUGAS (CALLSIGN)</th>
+                                    <th>JENIS GIAT</th>
+                                    <th>LOKASI</th>
+                                    <th>KETERANGAN AKTIVITAS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="giatTableBody">
+                                <tr><td colspan="5" style="text-align:center; padding:30px; color:#64748b;"><i class="fas fa-spinner fa-spin"></i> Memuat database arsip kegiatan...</td></tr>
+                            </tbody>
+                        </table>
+                        <div class="pagination-controls" id="giatPagination"></div>
+                    </div>
+
+                    <div id="pageGiatIcarus" class="page-section single-pane">
+                        <style>
+                            .giat-card { background: linear-gradient(145deg, rgba(40, 40, 40, 0.95), rgba(20, 20, 20, 0.95)); backdrop-filter: blur(10px); padding: 35px 40px; border-radius: 12px; width: 100%; max-width: 520px; box-shadow: 0 15px 40px rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.08); margin: 0 auto; }
+                            .giat-card h2 { text-align: center; color: #ffffff; margin-bottom: 25px; font-weight: 900; letter-spacing: 0.5px; font-size: 20px; text-transform: uppercase; }
+                            .giat-label { display: block; color: #ffffff; font-weight: 700; font-size: 13px; margin-bottom: 8px; font-family: 'Inter', sans-serif; text-transform: none; letter-spacing: 0; }
+                            .giat-input { width: 100%; padding: 12px 14px; border-radius: 6px; border: none; background: #f1f5f9; color: #1e293b; font-size: 13px; font-family: 'Inter', sans-serif; outline: none; transition: 0.3s; }
+                            .giat-input:focus { box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.4); }
+                            .giat-radio-group { display: flex; gap: 15px; align-items: center; flex-wrap: wrap; margin-bottom: 15px; }
+                            .giat-radio-group label { display: flex; align-items: center; gap: 6px; cursor: pointer; font-weight: 600; text-transform: none; color: #ffffff; font-size: 13px; margin: 0; }
+                            .giat-radio-group input[type="radio"] { accent-color: #ef4444; cursor: pointer; width: 14px; height: 14px; }
+                            .giat-btn { width: 100%; background: #2563eb; color: white; font-weight: bold; font-size: 15px; padding: 14px; border: none; border-radius: 6px; cursor: pointer; transition: 0.3s; margin-top: 10px; }
+                            .giat-btn:hover { background: #1d4ed8; }
+                            input[type="file"].giat-input { padding: 9px 14px; cursor: pointer; background: #e2e8f0; }
+                        </style>
+
+                        <div class="giat-card">
+                            <h2>PANEL LOG KEAKTIFAN ICARUS</h2>
+
+                            <div style="margin-bottom: 15px;">
+                                <label class="giat-label">Nama Lengkap</label>
+                                <input type="text" id="giatNamaPetugas" class="giat-input" placeholder="Masukkan nama...">
+                            </div>
+
+                            <div style="margin-bottom: 15px;">
+                                <label class="giat-label">Pangkat</label>
+                                <div style="display: flex; gap: 10px;">
+                                    <select id="giatPangkat1" class="giat-input" style="flex: 3;">
+                                        <option value="Deputi">Deputi</option>
+                                        <option value="Deputi Senior">Deputi Senior</option>
+                                        <option value="Sersan">Sersan</option>
+                                        <option value="Letnan">Letnan</option>
+                                        <option value="Kapten">Kapten</option>
+                                        <option value="Brigjend">Brigjen</option>
+                                        <option value="Mayjend">Mayjen</option>
+                                    </select>
+                                    <select id="giatPangkat2" class="giat-input" style="flex: 1;">
+                                        <option value="-">-</option>
+                                        <option value="I">I</option>
+                                        <option value="II">II</option>
+                                        <option value="III">III</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom: 15px;">
+                                <label class="giat-label">Callsign</label>
+                                <div style="display: flex; gap: 10px;">
+                                    <select id="giatCallsign1" class="giat-input" style="flex: 3;">
+                                        <option value="VP">VP</option>
+                                        <option value="OR">OR</option>
+                                        <option value="MV">MV</option>
+                                    </select>
+                                    <select id="giatCallsign2" class="giat-input" style="flex: 1;">
+                                        <option value="00">00</option>
+                                        <option value="01">01</option>
+                                        <option value="02">02</option>
+                                        <option value="03">03</option>
+                                        <option value="04">04</option>
+                                        <option value="05">05</option>
+                                        <option value="06">06</option>
+                                        <option value="07">07</option>
+                                        <option value="08">08</option>
+                                        <option value="09">09</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom: 5px;">
+                                <label class="giat-label">Jenis Kegiatan</label>
+                                <div class="giat-radio-group">
+                                    <label><input type="radio" name="jenis_giat" value="Udara" checked onchange="togglePelanggar(this)"> Udara</label>
+                                    <label><input type="radio" name="jenis_giat" value="Laut" onchange="togglePelanggar(this)"> Laut</label>
+                                    <label><input type="radio" name="jenis_giat" value="Darat" onchange="togglePelanggar(this)"> Darat</label>
+                                    <label><input type="radio" name="jenis_giat" value="Lisensi" onchange="togglePelanggar(this)"> Lisensi</label>
+                                    <label><input type="radio" name="jenis_giat" value="Penilangan" onchange="togglePelanggar(this)"> Penilangan</label>
+                                </div>
+                            </div>
+
+                            <div id="fieldPelanggar" style="margin-bottom: 15px; display: none; background: rgba(239, 68, 68, 0.15); padding: 12px; border-radius: 6px; border: 1px solid rgba(239, 68, 68, 0.4);">
+                                <label class="giat-label" style="color: #fca5a5;">Nama Pelanggar (Warga)</label>
+                                <input type="text" id="giatNamaPelanggar" class="giat-input" placeholder="Ketik nama warga yang ditilang...">
+                                <p style="font-size: 10px; color: #f87171; margin-top: 5px; margin-bottom: 0;">*Nama ini akan dicek otomatis ke Database Lisensi.</p>
+                            </div>
+
+                            <div style="margin-bottom: 15px;">
+                                <label class="giat-label">Keterangan Kegiatan</label>
+                                <textarea id="giatKeterangan" class="giat-input" rows="3" placeholder="Jelaskan kegiatan detail..." style="resize: vertical;"></textarea>
+                            </div>
+
+                            <div style="margin-bottom: 15px;">
+                                <label class="giat-label">Lokasi</label>
+                                <input type="text" id="giatLokasi" class="giat-input" placeholder="Titik lokasi...">
+                            </div>
+
+                            <div style="margin-bottom: 25px;">
+                                <label class="giat-label">Bukti Dokumentasi (Foto Maks. 8MB)</label>
+                                <input type="file" id="giatFoto" class="giat-input" accept="image/*">
+                            </div>
+
+                            <button id="btnKirimGiat" class="giat-btn">Kirim Laporan</button>
+                        </div>
+                    </div>
+
+                    <div id="pageGenerator" class="page-section">
+                        <div class="v-form-pane">
+                            <div class="form-group full-width">
+                                <label for="inputMode">JENIS PENGAJUAN LISENSI</label>
+                                <select id="inputMode" class="v-input-dark" style="color: #fbbf24; border-color: rgba(251, 191, 36, 0.3);">
+                                    <option value="BARU">PENERBITAN LISENSI BARU</option>
+                                    <option value="PERPANJANG">PERPANJANG LISENSI LAMA</option>
+                                </select>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="inputFoto">UPLOAD PAS FOTO</label>
+                                <input type="file" id="inputFoto" class="input-dashed v-input-dark" accept="image/*">
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="inputNama">NAMA LENGKAP KTP</label>
+                                <input type="text" id="inputNama" class="v-input-dark" placeholder="Masukkan Nama Lengkap">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="inputGender">JENIS KELAMIN</label>
+                                    <select id="inputGender" class="v-input-dark">
+                                        <option value="LAKI-LAKI">LAKI-LAKI</option>
+                                        <option value="PEREMPUAN">PEREMPUAN</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputDob">TANGGAL LAHIR</label>
+                                    <input type="date" id="inputDob" class="v-input-dark">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="inputPekerjaan">PEKERJAAN</label>
+                                    <input type="text" id="inputPekerjaan" class="v-input-dark" placeholder="Contoh: PELAUT">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputNoKapal">NOMOR PLAT KAPAL</label>
+                                    <input type="text" id="inputNoKapal" class="v-input-dark" placeholder="Nomor Lambung / Plat">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="inputImo">IMO RATING</label>
+                                    <input type="text" id="inputImo" class="v-input-dark" placeholder="A / B / C / D / E">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputJabatan">JABATAN</label>
+                                    <input type="text" id="inputJabatan" class="v-input-dark" placeholder="KAPTEN KAPAL">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="inputNoTelp">NO. TELEPON</label>
+                                    <input type="text" id="inputNoTelp" class="v-input-dark" placeholder="08XXXXXXXXXX">
+                                </div>
+                                <div class="form-group">
+                                    <label>MASA BERLAKU</label>
+                                    <input type="text" id="inputExpired" class="v-input-dark" placeholder="Pilih Penambahan Bulan" style="margin-bottom: 5px;">
+                                    <div class="date-buttons">
+                                        <button type="button" id="btnPlus1" class="v-btn-small">+1 BLN</button>
+                                        <button type="button" id="btnPlus2" class="v-btn-small">+2 BLN</button>
+                                        <button type="button" id="btnPlus3" class="v-btn-small">+3 BLN</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group full-width" style="margin-top: 10px;">
+                                <label for="inputRegistrasi">NOMOR REGISTRASI LISENSI</label>
+                                <div style="display: flex; gap: 8px;">
+                                    <input type="text" id="inputRegistrasi" class="v-input-dark" placeholder="PL-XXXX" style="flex: 1;">
+                                    <button type="button" id="btnCariData" class="v-btn-action" style="display: none; padding: 0 15px;"><i class="fas fa-search"></i> CARI ARSIP</button>
+                                </div>
+                            </div>
+                            <div class="form-group full-width" style="display:none;">
+                                <input type="text" id="inputOfficer" readonly>
+                            </div>
+                            <div class="v-action-bar">
+                                <button id="btnGenerate" class="v-btn-primary"><i class="fas fa-cogs"></i> PROSES LISENSI</button>
+                                <button id="btnDiscord" class="v-btn-discord" disabled><i class="fab fa-discord"></i> KIRIM DISCORD</button>
+                            </div>
+                        </div>
+
+                        <div class="v-preview-pane">
+                            <div class="preview-wrapper">
+                                <div id="kartuLicensi" class="card-template">
+                                    <div class="texture-overlay"><img src="texture-bg.jpg" alt=""></div>
+                                    <div class="card-header-image"><img src="header-lisensi.jpg" alt="Header"></div>
+                                    <div class="mid-section">
+                                        <div class="side-logo-container">
+                                            <img src="logo-pegasus.png" alt="Pegasus" class="unit-logo">
+                                            <div class="side-logo-text">PEGASUS</div>
+                                        </div>
+                                        <div class="photo-frame">
+                                            <img id="displayFoto" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Preview Foto">
+                                        </div>
+                                        <div class="side-logo-container">
+                                            <img src="logo-icarus.png" alt="Icarus" class="unit-logo">
+                                            <div class="side-logo-text">ICARUS</div>
+                                        </div>
+                                    </div>
+                                    <div class="reg-title">
+                                        <div id="displayPillsTitle" class="pills">LISENSI PELAUT SIPIL</div>
+                                        <p>NOMOR REGISTRASI: <span id="displayRegistrasi">PL-1001</span></p>
+                                    </div>
+                                    <div class="data-grid">
+                                        <div class="list-container">
+                                            <div class="list-item"><span>1. NAMA</span><span id="displayNama">: -</span></div>
+                                            <div class="list-item"><span>2. JENIS KELAMIN</span><span id="displayGender">: -</span></div>
+                                            <div class="list-item"><span>3. PEKERJAAN</span><span id="displayPekerjaan">: -</span></div>
+                                            <div class="list-item"><span>4. JABATAN</span><span id="displayJabatan">: -</span></div>
+                                            <div class="list-item"><span>5. IMO RATING</span><span id="displayImo">: -</span></div>
+                                            <div class="list-item"><span>6. NOMOR KAPAL</span><span id="displayNoKapal">: -</span></div>
+                                        </div>
+                                        <div class="qr-placeholder" id="qrCodeContainer"></div>
+                                    </div>
+                                    <div class="footer-note">
+                                        TELAH MENYELESAIKAN PELATIHAN PELAUT DAN UJIAN LISENSI<br>
+                                        DENGAN MEMUASKAN SESUAI DENGAN PERATURAN KELAUTAN SIPIL INDOPRIDE.
+                                    </div>
+                                    <div class="signature-section">
+                                        <div class="valid-until-wrapper">
+                                            <div class="valid-until" id="displayExpiredContainer">
+                                                <div class="bg-watermark-small">
+                                                    <img src="logo-pegasus.png" class="watermark-icon-small" alt="">
+                                                    <img src="logo-icarus.png" class="watermark-icon-small" alt="">
+                                                </div>
+                                                <span class="text-content">BERLAKU HINGGA<br><span id="displayExpiredText">Masa Berlaku</span></span>
+                                            </div>
+                                            <img src="logo-ordo-icarus.png" alt="Stempel" class="stamp-logo-left">
+                                        </div>
+                                        <div class="officer-and-signature-box">
+                                            <div class="officer-box">
+                                                <p class="officer-label">PETUGAS:</p>
+                                                <div class="officer-id" id="displayOfficerSpan">VP-00</div>
+                                            </div>
+                                            <div class="signature-and-unit-col">
+                                                <div class="signature-row">
+                                                    <div id="autoSignature" class="auto-signature"></div>
+                                                    <img src="logo-gabungan.png" alt="Stempel" class="stamp-logo-right">
+                                                </div>
+                                                <div class="signature-footer-text">
+                                                    <div class="unit-text-straight" id="displayUnit">STATUS AFILIASI</div>
+                                                    <div class="issue-date-text">DITERBITKAN: <span id="displayIssueDate">-</span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="pageDatabasePelaut" class="page-section single-pane">
+                        <h2 class="page-title"><i class="fas fa-database"></i> DATABASE LISENSI PELAUT</h2>
+                        <p class="page-desc">Tabel rekapitulasi seluruh lisensi pelaut yang telah diterbitkan, aktif, kedaluwarsa, maupun dicabut.</p>
+                        
+                        <div class="db-controls">
+                            <input type="text" id="inputSearchDB" class="v-input-dark" placeholder="Cari Nama / No. Registrasi..." style="flex:1;">
+                            <button id="btnExportCSV" class="v-btn-action" style="background: #eab308; color: #000; padding: 10px 20px;"><i class="fas fa-file-excel"></i> DOWNLOAD REKAPAN (.CSV)</button>
+                        </div>
+                        <table class="v-table" style="font-size:11px;">
+                            <thead>
+                                <tr>
+                                    <th>REG</th>
+                                    <th>NAMA LENGKAP</th>
+                                    <th>JABATAN</th>
+                                    <th>IMO</th>
+                                    <th>MASA BERLAKU</th>
+                                    <th>STATUS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="dbTableBody">
+                                <tr><td colspan="6" style="text-align:center; padding:30px; color:#64748b;"><i class="fas fa-spinner fa-spin"></i> Memuat database server...</td></tr>
+                            </tbody>
+                        </table>
+                        <div class="pagination-controls" id="dbPagination"></div>
+                    </div>
+
+                    <div id="pageLisensiPenerbang" class="page-section">
+                        <style>
+                            .card-penerbang {
+                                width: 720px;
+                                height: 450px;
+                                background: #ffffff url('lisensi penerbang.png') center/cover no-repeat !important;
+                                border-radius: 12px;
+                                box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+                                position: relative;
+                                overflow: hidden;
+                                font-family: 'Inter', sans-serif;
+                                border: none;
+                            }
+                            .cp-header { position: absolute; top: 25px; left: 0; width: 100%; text-align: center; z-index: 5; }
+                            .cp-header h1 { color: #17366b; font-size: 28px; font-weight: 800; margin: 0; letter-spacing: 1px; text-shadow: 0 1px 2px rgba(255,255,255,0.8); }
+                            .cp-header h2 { color: #334155; font-size: 14px; font-weight: 700; letter-spacing: 8px; margin: 4px 0 10px 0; }
+                            .cp-header-line { width: 82%; height: 4px; background: #17366b; margin: 0 auto; }
+                            .cp-left { position: absolute; top: 115px; left: 45px; width: 150px; display: flex; flex-direction: column; align-items: center; z-index: 5; }
+                            .cp-photo-box { width: 140px; height: 190px; background: #ffffff; border: 2px solid #cbd5e1; border-radius: 8px; padding: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); position: relative; }
+                            .cp-photo-box img.foto-profil { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; }
+                            .cp-photo-logo { position: absolute; top: 8px; right: 8px; width: 25px; opacity: 0.9; }
+                            .cp-no-lisensi { margin-top: 15px; text-align: center; }
+                            .cp-no-lisensi label { font-size: 9px; font-weight: 800; color: #64748b; }
+                            .cp-no-lisensi div { font-size: 18px; font-weight: 800; color: #0f172a; margin-top: 2px; letter-spacing: 1px; }
+                            .cp-right { position: absolute; top: 110px; left: 220px; width: 450px; z-index: 5; }
+                            .cp-name-label { font-size: 10px; font-weight: 800; color: #17366b; margin-bottom: 2px; }
+                            .cp-name-value { font-size: 24px; font-weight: 800; color: #17366b; text-transform: uppercase; margin-bottom: 18px; line-height: 1; }
+                            .cp-grid { display: grid; grid-template-columns: 1fr 1fr; row-gap: 12px; column-gap: 20px; }
+                            .cp-field { display: flex; flex-direction: column; }
+                            .cp-field-label { font-size: 9px; font-weight: 800; color: #64748b; margin-bottom: 2px; text-transform: uppercase; }
+                            .cp-field-value { font-size: 13px; font-weight: 800; color: #0f172a; text-transform: uppercase; }
+                            .cp-indopride-logo { position: absolute; top: 110px; right: 40px; width: 65px; opacity: 0.9; }
+                            .cp-footer-text { position: absolute; bottom: 40px; left: 220px; width: 330px; font-size: 7px; font-weight: 800; color: #64748b; text-align: justify; line-height: 1.4; }
+                            #dispPetugasHeli { display: none; }
+                        </style>
+
+                        <div class="v-form-pane">
+                            <div class="form-group full-width">
+                                <label for="inputFotoHeli">UPLOAD FOTO PENERBANG</label>
+                                <input type="file" id="inputFotoHeli" class="input-dashed v-input-dark" accept="image/*">
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label for="inputNamaHeli">NAMA LENGKAP SESUAI KTP</label>
+                                <input type="text" id="inputNamaHeli" class="v-input-dark" placeholder="Masukkan Nama Lengkap">
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="inputInstHeli">INSTITUSI</label>
+                                    <input type="text" id="inputInstHeli" class="v-input-dark" placeholder="Contoh: SAILOR / CIVILIAN">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputDobHeli">DATE OF BIRTH (DOB)</label>
+                                    <input type="date" id="inputDobHeli" class="v-input-dark">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="inputRatingHeli">RATING</label>
+                                    <input type="text" id="inputRatingHeli" class="v-input-dark" placeholder="Jenis Pesawat / Heli">
+                                </div>
+                                <div class="form-group">
+                                    <label>CALLSIGN PENERBANG</label>
+                                    <div style="display: flex; gap: 8px;">
+                                        <select id="inputCallsignHeliA" class="v-input-dark" style="flex: 1;">
+                                            <option value="OR">OR</option><option value="IC">IC</option>
+                                            <option value="VP">VP</option><option value="MD">MD</option>
+                                            <option value="GV">GV</option><option value="CV">CV</option>
+                                        </select>
+                                        <select id="inputCallsignHeliB" class="v-input-dark" style="flex: 1;">
+                                            <option value="00">00</option><option value="01">01</option>
+                                            <option value="02">02</option><option value="03">03</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label for="inputAuthHeli">ISSUING AUTHORITY</label>
+                                <select id="inputAuthHeli" class="v-input-dark">
+                                    <option value="SHERIFF ROXWOOD">SHERIFF ROXWOOD</option>
+                                </select>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="inputGenderHeli">JENIS KELAMIN</label>
+                                    <select id="inputGenderHeli" class="v-input-dark">
+                                        <option value="LAKI-LAKI">LAKI-LAKI</option>
+                                        <option value="PEREMPUAN">PEREMPUAN</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>BERLAKU HINGGA</label>
+                                    <input type="text" id="inputExpiredHeli" class="v-input-dark" placeholder="Masukkan Masa Berlaku" style="margin-bottom: 5px;">
+                                    <div class="date-buttons">
+                                        <button type="button" id="btnPlus1Heli" class="v-btn-small">+1 BLN</button>
+                                        <button type="button" id="btnPlus2Heli" class="v-btn-small">+2 BLN</button>
+                                        <button type="button" id="btnPlus3Heli" class="v-btn-small">+3 BLN</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group full-width" style="margin-top: 10px;">
+                                <label for="inputRegHeli">NOMOR LISENSI</label>
+                                <input type="text" id="inputRegHeli" class="v-input-dark" placeholder="SR/IC-XXXX" readonly>
+                            </div>
+
+                            <div class="v-action-bar">
+                                <button id="btnGenerateHeli" class="v-btn-primary" style="background: #10b981; color: white; border:none; box-shadow: 0 4px 10px rgba(16,185,129,0.3);"><i class="fas fa-file-download"></i> CETAK & SIMPAN KARTU</button>
+                                <button id="btnDiscordHeli" class="v-btn-discord" disabled><i class="fab fa-discord"></i> KIRIM KE DISCORD</button>
+                            </div>
+                        </div>
+
+                        <div class="v-preview-pane">
+                            <div class="preview-wrapper" style="transform: scale(0.85);"> 
+                                <div id="kartuPenerbang" class="card-penerbang">
+                                    <div class="cp-header">
+                                        <h1>SHERIFF ICARUS ROXWOOD</h1>
+                                        <h2>LISENSI PENERBANG</h2>
+                                        <div class="cp-header-line"></div>
+                                    </div>
+
+                                    <img src="logo-indopride.png" alt="Indopride" class="cp-indopride-logo" onerror="this.style.display='none'">
+
+                                    <div class="cp-left">
+                                        <div class="cp-photo-box">
+                                            <img id="dispFotoHeli" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="foto-profil" alt="Foto">
+                                            <img src="logo-icarus.png" class="cp-photo-logo" alt="" onerror="this.style.display='none'">
+                                        </div>
+                                        <div class="cp-no-lisensi">
+                                            <label>NOMOR LISENSI</label>
+                                            <div id="dispRegHeli">SR/IC-0000</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="cp-right">
+                                        <div class="cp-name-label">NAMA LENGKAP</div>
+                                        <div class="cp-name-value" id="dispNamaHeli">- NAMA LENGKAP -</div>
+                                        
+                                        <div class="cp-grid">
+                                            <div class="cp-field">
+                                                <span class="cp-field-label">INSTITUTION</span>
+                                                <span class="cp-field-value" id="dispInstHeli">- INSTITUTION -</span>
+                                            </div>
+                                            <div class="cp-field">
+                                                <span class="cp-field-label">DATE OF BIRTH</span>
+                                                <span class="cp-field-value" id="dispDobHeli">-</span>
+                                            </div>
+                                            <div class="cp-field">
+                                                <span class="cp-field-label">RATING</span>
+                                                <span class="cp-field-value" id="dispRatingHeli">- RATING -</span>
+                                            </div>
+                                            <div class="cp-field">
+                                                <span class="cp-field-label">CALL SIGN</span>
+                                                <span class="cp-field-value" id="dispCallsignHeli">OR - 00</span>
+                                            </div>
+                                            <div class="cp-field">
+                                                <span class="cp-field-label">ISSUING AUTHORITY</span>
+                                                <span class="cp-field-value" id="dispAuthHeli">SHERIFF ROXWOOD</span>
+                                            </div>
+                                            <div class="cp-field">
+                                                <span class="cp-field-label">JENIS KELAMIN</span>
+                                                <span class="cp-field-value" id="dispGenderHeli">- L/P -</span>
+                                            </div>
+                                            <div class="cp-field" style="margin-top: 5px;">
+                                                <span class="cp-field-label">BERLAKU HINGGA</span>
+                                                <span class="cp-field-value" id="dispExpiredHeli" style="color: #dc2626;">- TANGGAL -</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="cp-footer-text">
+                                        THIS CERTIFIES THAT THE BEARER IS AUTHORIZED TO OPERATE REGISTERED AIRCRAFT WITHIN THE JURISDICTION OF ROXWOOD, STRICTLY LIMITED TO THE RATINGS HELD AND DOCUMENTED.
+                                    </div>
+                                    
+                                    <div id="dispPetugasHeli"></div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="pageDatabasePenerbang" class="page-section single-pane">
+                        <h2 class="page-title"><i class="fas fa-server"></i> DATABASE LISENSI PENERBANG</h2>
+                        <p class="page-desc">Tabel rekapitulasi seluruh lisensi penerbang (helikopter & pesawat) yang telah diterbitkan dan tersertifikasi.</p>
+                        
+                        <div class="db-controls">
+                            <input type="text" id="inputSearchDBHeli" class="v-input-dark" placeholder="Cari Nama / No. Lisensi / Callsign..." style="flex:1;">
+                            <button id="btnExportCSVHeli" class="v-btn-action" style="background: #eab308; color: #000; padding: 10px 20px;"><i class="fas fa-file-excel"></i> DOWNLOAD REKAPAN (.CSV)</button>
+                        </div>
+                        <table class="v-table" style="font-size:11px;">
+                            <thead>
+                                <tr>
+                                    <th>NO. LISENSI</th>
+                                    <th>NAMA LENGKAP</th>
+                                    <th>CALLSIGN & RATING</th>
+                                    <th>AUTHORITY</th>
+                                    <th>MASA BERLAKU</th>
+                                    <th>STATUS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="dbTableBodyHeli">
+                                <tr><td colspan="6" style="text-align:center; padding:30px; color:#64748b;"><i class="fas fa-spinner fa-spin"></i> Memuat database server...</td></tr>
+                            </tbody>
+                        </table>
+                        <div class="pagination-controls" id="dbPaginationHeli"></div>
+                    </div>
+
+                    <div id="pagePenyitaan" class="page-section single-pane">
+                        <h2 class="page-title"><i class="fas fa-boxes"></i> LOGBOOK PENYITAAN BARANG BUKTI</h2>
+                        <p class="page-desc">Database pencatatan barang bukti hasil operasi penertiban batas wilayah laut, kargo udara ilegal, dan kepabeanan sipil.</p>
+
+                        <div style="background: rgba(15, 23, 42, 0.6); padding: 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 25px;">
+                            <h3 style="color: #fbbf24; font-size: 12px; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px;">[+] INPUT BARANG BUKTI BARU</h3>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>NAMA TERSANGKA / PELANGGAR</label>
+                                    <input type="text" id="inputTersangkaSita" class="v-input-dark" placeholder="Nama warga (jika ada) atau 'TIDAK DIKETAHUI'">
+                                </div>
+                                <div class="form-group">
+                                    <label>KATEGORI BARANG SITAAN</label>
+                                    <select id="inputKategoriSita" class="v-input-dark">
+                                        <option value="Hasil Laut Ilegal">Hasil Laut Ilegal (Illegal Fishing)</option>
+                                        <option value="Penyelundupan Satwa">Penyelundupan Satwa Liar</option>
+                                        <option value="Narkotika & Obat">Narkotika & Obat Terlarang</option>
+                                        <option value="Senjata Ilegal">Senjata Api / Tajam Ilegal</option>
+                                        <option value="Barang Selundupan">Kontraband / Barang Selundupan Lainnya</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group" style="flex: 2;">
+                                    <label>DETAIL BARANG & JUMLAH</label>
+                                    <input type="text" id="inputDetailSita" class="v-input-dark" placeholder="Contoh: 50 Kg Ikan Pari, 2 Unit AK-47, dll.">
+                                </div>
+                                <div class="form-group" style="flex: 1;">
+                                    <label>STATUS BARANG</label>
+                                    <select id="inputStatusSita" class="v-input-dark">
+                                        <option value="DISIMPAN">DISIMPAN DI GUDANG</option>
+                                        <option value="DISERAHKAN">DISERAHKAN KE KEPOLISIAN</option>
+                                        <option value="DIMUSNAHKAN">TELAH DIMUSNAHKAN</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group full-width" style="margin-top: 5px;">
+                                <label>LOKASI PENYITAAN</label>
+                                <input type="text" id="inputLokasiSita" class="v-input-dark" placeholder="Titik lokasi pencegatan / penyitaan...">
+                            </div>
+
+                            <button id="btnSimpanSitaan" class="v-btn-action" style="padding: 12px; width: 100%; margin-top: 15px; background: #eab308; color: #000;"><i class="fas fa-save"></i> CATAT BARANG BUKTI</button>
+                        </div>
+
+                        <div class="db-controls" style="margin-top: 10px; margin-bottom: 15px;">
+                            <input type="text" id="inputSearchSitaan" class="v-input-dark" placeholder="Cari Nama Tersangka / Barang / Lokasi..." style="flex:1; border-color: rgba(251, 191, 36, 0.4);">
+                        </div>
+                        
+                        <table class="v-table">
+                            <thead>
+                                <tr>
+                                    <th>WAKTU SITA</th>
+                                    <th>TERSANGKA</th>
+                                    <th>DETAIL BARANG BUKTI</th>
+                                    <th>STATUS</th>
+                                    <th>PETUGAS SITA</th>
+                                    <th>AKSI</th>
+                                </tr>
+                            </thead>
+                            <tbody id="sitaanTableBody">
+                                <tr><td colspan="6" style="text-align:center; padding: 30px; color: #64748b;">Memuat logbook barang bukti...</td></tr>
+                            </tbody>
+                        </table>
+                        <div class="pagination-controls" id="sitaanPagination"></div>
+                    </div>
+
+                    <div id="pagePenilangan" class="page-section single-pane">
+                        <h2 class="page-title"><i class="fas fa-gavel"></i> DATA PENILANGAN & VALIDASI SISTEM</h2>
+                        <p class="page-desc">Data di bawah ini ditarik otomatis dari form Lapor Giat dan disinkronkan (*Cross-Reference*) dengan Database Lisensi Pelaut/Penerbang untuk mengecek kebohongan warga.</p>
+                        
+                        <table class="v-table">
+                            <thead>
+                                <tr>
+                                    <th>TANGGAL</th>
+                                    <th>NAMA PELANGGAR</th>
+                                    <th>LOKASI & KETERANGAN</th>
+                                    <th>PETUGAS PELAPOR</th>
+                                    <th>STATUS KEPEMILIKAN LISENSI (SISTEM)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tilangTableBody">
+                                <tr><td colspan="5" style="text-align:center; padding: 30px; color: #64748b;">Memuat data penilangan...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="pageProgressAnggota" class="page-section single-pane">
+                        <h2 class="page-title"><i class="fas fa-hourglass-half"></i> MONITORING PROGRESS ANGGOTA</h2>
+                        <p class="page-desc">Sistem pelacakan poin keaktifan (Activity Points), riwayat penugasan, dan evaluasi kelayakan kenaikan pangkat (Promosi) anggota Ordo Icarus & Pegasus.</p>
+
+                        <div id="formProgressPimpinan" style="background: rgba(15, 23, 42, 0.6); padding: 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 25px; display: none;">
+                            <h3 style="color: #fbbf24; font-size: 12px; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px;">[+] EVALUASI & UPDATE POIN ANGGOTA (KHUSUS PIMPINAN)</h3>
+
+                            <div class="form-row">
+                                <div class="form-group" style="flex: 2;">
+                                    <label>NAMA ANGGOTA</label>
+                                    <input type="text" id="inputNamaProg" class="v-input-dark" placeholder="Masukkan nama anggota...">
+                                </div>
+                                <div class="form-group" style="flex: 1;">
+                                    <label>CALLSIGN</label>
+                                    <input type="text" id="inputCallsignProg" class="v-input-dark" placeholder="Contoh: VP-03">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>PENYESUAIAN POIN (+ / -)</label>
+                                    <input type="number" id="inputPoinProg" class="v-input-dark" placeholder="Ketik angka (Contoh: 10 atau -5)">
+                                </div>
+                                <div class="form-group">
+                                    <label>STATUS ANGGOTA SAAT INI</label>
+                                    <select id="inputStatusProg" class="v-input-dark">
+                                        <option value="AKTIF">AKTIF BERTUGAS</option>
+                                        <option value="MASA PERCOBAAN">MASA PERCOBAAN (PROBATION)</option>
+                                        <option value="CUTI">CUTI (LEAVE OF ABSENCE)</option>
+                                        <option value="SUSPENDED">DITANGGUHKAN (SUSPENDED)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group full-width" style="margin-top: 5px;">
+                                <label>CATATAN / ALASAN EVALUASI</label>
+                                <input type="text" id="inputCatatanProg" class="v-input-dark" placeholder="Contoh: Menyelesaikan patroli laut dengan baik, Lulus ujian aviasi, dll.">
+                            </div>
+
+                            <button id="btnSimpanProgress" class="v-btn-action" style="padding: 12px; width: 100%; margin-top: 15px; background: #3b82f6;"><i class="fas fa-save"></i> UPDATE DATA ANGGOTA</button>
+                        </div>
+
+                        <div class="db-controls" style="margin-top: 10px; margin-bottom: 15px;">
+                            <input type="text" id="inputSearchProg" class="v-input-dark" placeholder="Cari Nama / Callsign anggota..." style="flex:1; border-color: rgba(251, 191, 36, 0.4);">
+                        </div>
+
+                        <table class="v-table">
+                            <thead>
+                                <tr>
+                                    <th>CALLSIGN</th>
+                                    <th>NAMA ANGGOTA</th>
+                                    <th style="width: 150px;">TOTAL POIN</th>
+                                    <th>STATUS</th>
+                                    <th>CATATAN TERAKHIR</th>
+                                    <th>AKSI</th>
+                                </tr>
+                            </thead>
+                            <tbody id="progressTableBody">
+                                <tr><td colspan="6" style="text-align:center; padding: 30px; color: #64748b;">Memuat data progress...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="pageStatistik" class="page-section single-pane">
+                        <h2 class="page-title"><i class="fas fa-chart-line"></i> STATISTIK KINERJA SISTEM</h2>
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-icon-wrapper blue-glow"><i class="fas fa-users"></i></div>
+                                <div class="stat-info"><h3>TOTAL ARSIP DOKUMEN</h3><p id="statTotal">0</p></div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon-wrapper green-glow"><i class="fas fa-check-circle"></i></div>
+                                <div class="stat-info"><h3>LISENSI AKTIF</h3><p id="statAktif">0</p></div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon-wrapper red-glow"><i class="fas fa-ban"></i></div>
+                                <div class="stat-info"><h3>LISENSI DICABUT</h3><p id="statCabut">0</p></div>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <h3 class="chart-title">KOMPARASI ANALISIS STATUS KELAUTAN & PENERBANGAN</h3>
+                            <div style="position: relative; height: 320px; width: 100%;"><canvas id="statistikChart"></canvas></div>
+                        </div>
+                    </div>
+
+                    <div id="pageAudit" class="page-section single-pane">
+                        <h2 class="page-title"><i class="fas fa-history"></i> LOG AKTIVITAS PETUGAS</h2>
+                        <p class="page-desc">Rekam jejak tindakan real-time seluruh operator yang masuk ke sistem administrasi MDT Icarus.</p>
+                        <table class="v-table">
+                            <thead>
+                                <tr>
+                                    <th>WAKTU & TANGGAL</th>
+                                    <th>KODE PETUGAS</th>
+                                    <th>TINDAKAN</th>
+                                    <th>KETERANGAN AKTIVITAS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="auditTableBody">
+                                <tr><td colspan="4" style="text-align:center; padding:20px;">Memuat audit trail...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="cropperModal">
+        <div class="modal-content">
+            <div class="img-container"><img id="imageToCrop" src="" alt="Crop Area"></div>
+            <div class="modal-buttons">
+                <button id="btnCancelCrop" class="btn-cancel" style="background: #334155;">BATAL</button>
+                <button id="btnApplyCrop" class="btn-apply" style="background: #3b82f6;">POTONG & SIMPAN</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="script.js"></script>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            setInterval(() => {
+                const offInput = document.getElementById('inputOfficer');
+                if(offInput && offInput.value) {
+                    document.getElementById('displayOfficerSpan').innerText = offInput.value;
+                }
+            }, 500);
+        });
+
+        function toggleSidebar() {
+            document.getElementById('hamburgerBtn').classList.toggle('active');
+            document.getElementById('sidebar').classList.toggle('collapsed');
+        }
+
+        function switchPage(pageId, element) {
+            document.querySelectorAll('.menu-item').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+            document.querySelectorAll('.page-section').forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
