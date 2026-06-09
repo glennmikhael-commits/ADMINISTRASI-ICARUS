@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ICARUS Official MDT System</title>
+    <title>SISTEM ADMINISTRASI ICARUS</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" crossorigin="anonymous">
@@ -23,64 +23,130 @@
 </head>
 <body>
 
-    <div id="loginScreen" class="login-wrapper">
-        <div class="login-box">
-            <img src="LGO ICARUS HD.png" alt="Logo" style="width: 150px; margin-bottom: 15px;">
-            <h2 style="color: #fbbf24; margin-bottom: 20px; font-size: 18px; letter-spacing: 1px;">PORTAL ADMINISTRASI ICARUS</h2>
+<div id="landingWrapper" style="height: 100vh; width: 100vw; overflow-y: auto; position: fixed; top: 0; left: 0; z-index: 99999; scroll-behavior: smooth;">
+    
+    <div id="loginPage" class="icarus-login-container">
+        <div class="icarus-login-wrapper">
             
-            <input type="email" id="loginEmail" placeholder="Email Petugas @icarus.com" class="login-input">
-            <input type="password" id="loginPassword" placeholder="Password" class="login-input">
-            <button id="btnLogin" class="btn-simpan">MASUK SISTEM</button>
-            <p id="loginError" style="color: #ff4d4d; font-size: 12px; margin-top: 10px; display: none;"></p>
-        </div>
+            <div class="icarus-branding-side">
+                <img src="logo-icarus.png" alt="Logo Icarus" class="login-logo" onerror="this.style.display='none'">
+                <h1 class="login-main-title">ORDO ICARUS</h1>
+                <h3 class="login-sub-title">DEMI SAYAP YANG KAMI PILIH SENDIRI</h3>
+                <p class="login-desc">
+                    Sistem komando dan integrasi data penegakan hukum untuk Icarus, Sheriff Roxwood. Menjalankan fungsi pengawasan, pengamanan, serta ketertiban di wilayah laut dan udara Indopride.
+                </p>
+            </div>
 
-        <div class="login-footer">
-            <div class="footer-links">
-                <a href="#" id="linkAbout">Tentang Kami</a>
-                <a href="https://discord.com/users/1461376008858108068" target="_blank">
-                    <i class="fab fa-discord"></i> Hubungi Kami
-                </a>
-                <a href="https://www.tiktok.com/@icarus_idp" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
+            <div class="icarus-form-side">
+                <h2 class="form-title">LOGIN PETUGAS</h2>
+                
+                <div class="login-form-group">
+                    <div class="input-block">
+                        <label for="inputOfficer">EMAIL / ID PETUGAS</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-envelope"></i>
+                            <input type="text" id="inputOfficer" placeholder="admin@icarus.com" autocomplete="off" required>
+                        </div>
+                    </div>
+
+                    <div class="input-block">
+                        <label for="inputPassword">PASSWORD</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="inputPassword" placeholder="••••••••••••" required>
+                        </div>
+                    </div>
+
+                    <button id="btnLogin" class="btn-login-submit">
+                        <i class="fas fa-sign-in-alt"></i> MASUK KE SISTEM
+                    </button>
+                    
+                    <p id="loginError" style="color: #ef4444; font-size: 11px; margin-top: 15px; display: none; font-weight: bold; text-align: center; letter-spacing: 1px;">
+                        <i class="fas fa-exclamation-triangle"></i> Akses Ditolak! Cek email/password Anda.
+                    </p>
+                </div>
             </div>
-            <div class="footer-copyright">
-                &copy; 2026 Copyright by Ordo Icarus - Indopride. All Rights Reserved. This system is owned and operated by Icarus Sheriff Roxwood.
-            </div>
+
+        </div>
+        
+        <div class="scroll-indicator" id="linkAbout" title="Scroll ke bawah atau klik">
+            SCROLL KE BAWAH UNTUK MELIHAT TENTANG KAMI<br>
+            <i class="fas fa-chevron-down"></i>
         </div>
     </div>
 
-    <div id="aboutModal" class="about-modal">
+    <section id="aboutSection" class="about-section-container">
         <div class="about-content">
-            <span class="close-about" id="closeAbout">&times;</span>
-            <div style="text-align: center; margin-bottom: 20px;">
-                <img src="logo-icarus.png" alt="Icarus" style="width: 80px;">
-                <h2 style="color: #fbbf24; margin-top: 10px; font-family: 'Cinzel', serif; font-weight: 900; letter-spacing: 2px;">ORDO ICARUS</h2>
-            </div>
             
-            <p style="color: #cbd5e1; font-size: 13px; line-height: 1.6; text-align: justify; margin-bottom: 20px; font-family: 'Inter', sans-serif;">
-                <b>Ordo Icarus</b> adalah salah satu ordo resmi di bawah struktur SHERIFF ROXWOOD INDOPRIDE yang dibentuk untuk menjalankan fungsi pengamanan, pengawasan, serta penegakan ketertiban di wilayah laut dan udara Roxwood, sebagai bagian yang tidak terpisahkan dari wilayah Indopride.
-            </p>
+            <div class="icarus-about-wrapper">
+                <div class="about-text-side">
+                    <h1 class="about-main-title">TENTANG ORDO ICARUS</h1>
+                    <h3 class="about-sub-title">DEMI SAYAP YANG KAMI PILIH SENDIRI</h3>
+                    <p class="about-desc">
+                        Ordo Icarus berdiri sebagai pilar penegakan hukum di wilayah laut dan udara Indopride. Kami bukan hanya sekadar penegak aturan, melainkan pelindung ketertiban, keamanan, dan kedamaian di setiap wilayah yurisdiksi kami.
+                        <br><br>
+                        Dengan integritas dan dedikasi, kami menjalankan fungsi pengawasan, pengamanan, serta koordinasi antar ordo, memastikan setiap operasi berjalan dengan efisiensi. Icarus, Sheriff Roxwood, adalah simbol kepercayaan masyarakat akan keadilan baik di laut maupun di udara.
+                    </p>
+                    <button class="v-btn-outline v-btn-gold ghost-btn-large">
+                        <i class="fas fa-images"></i> LIHAT GALERI PENUH
+                    </button>
+                </div>
 
-            <h3 style="color: #fff; font-size: 12px; margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 5px;">DOKUMENTASI KEGIATAN</h3>
-            <div class="about-gallery">
-                <div class="gallery-item">
-                    <img src="https://media.discordapp.net/attachments/1474186524747894919/1509046610653347910/ica_2.png?ex=6a17c0ac&is=6a166f2c&hm=97c0a317a52aec5c28b7ef098943047c88a5fccb8f06ccd782f0247cf64226e0&=&format=webp&quality=lossless&width=1510&height=850" alt="Patroli Udara Rutin">
-                    <div class="gallery-caption">Patroli Udara Rutin</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://media.discordapp.net/attachments/1474186524747894919/1509046609202118736/ica4.png?ex=6a17c0ac&is=6a166f2c&hm=c5cf5adb1c75829eec28146ae0bcc73909c96b8e99976b276e87446e4b03f914&=&format=webp&quality=lossless&width=1510&height=850" alt="Patroli Laut Rutin">
-                    <div class="gallery-caption">Patroli Laut Rutin</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://media.discordapp.net/attachments/1474186524747894919/1509047003190005870/ica_3.png?ex=6a17c10a&is=6a166f8a&hm=5040485edf41e2e4cb628b64ea7722246225331dd7d4a02c1e46b2ebf8a62c6d&=&format=webp&quality=lossless&width=1418&height=850" alt="Pembaretan">
-                    <div class="gallery-caption">Upacara Pembaretan</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://media.discordapp.net/attachments/1463968885677228032/1507600345960939702/FiveM_GTAProcess_2026-05-23_13-06-29_092.png?ex=6a171afc&is=6a15c97c&hm=df87a7e9de121b38a9f8ebc3bb6d7d345ca07aa116de11a4ddf6296ec69ed956&=&format=webp&quality=lossless&width=1511&height=850" alt="Pelatihan">
-                    <div class="gallery-caption">Pelatihan Penerbangan</div>
+                <div class="about-gallery-side">
+                    <div class="icarus-gallery-grid">
+                        <div class="icarus-gallery-item">
+                            <div class="item-status-badge is-active">
+                                <i class="fas fa-ship"></i>
+                                <span>ON PATROL</span>
+                            </div>
+                            <img src="laut.png" alt="Patroli Laut" class="gallery-img">
+                            <div class="item-caption">
+                                <h4>PELATIHAN RUTIN TIM VIPER</h4>
+                                <p>Perairan Roxwood</p>
+                            </div>
+                        </div>
+
+                        <div class="icarus-gallery-item">
+                            <div class="item-status-badge is-cmd">
+                                <i class="fas fa-user-check"></i>
+                                <span>ONLINE</span>
+                            </div>
+                            <img src="komando.png" alt="Pusat Komando" class="gallery-img">
+                            <div class="item-caption">
+                                <h4>PELANTIKAN CADET</h4>
+                                <p>Operasi & Visual Suspect</p>
+                            </div>
+                        </div>
+
+                        <div class="icarus-gallery-item">
+                            <div class="item-status-badge is-heli">
+                                <i class="fas fa-helicopter"></i>
+                                <span>AIR SUPPORT</span>
+                            </div>
+                            <img src="udara.png" alt="Dukungan Udara" class="gallery-img">
+                            <div class="item-caption">
+                                <h4>DUKUNGAN UDARA TIM Icarus</h4>
+                                <p>Udara Roxwood</p>
+                            </div>
+                        </div>
+
+                        <div class="icarus-gallery-item">
+                            <div class="item-status-badge is-cert">
+                                <i class="fas fa-award"></i>
+                                <span>CERTIFIED</span>
+                            </div>
+                            <img src="lisensi.png" alt="Sertifikasi" class="gallery-img">
+                            <div class="item-caption">
+                                <h4>SERTIFIKASI PELAUT & PENERBANG</h4>
+                                <p>Pusat Diklat Icarus</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+</div>
 
     <div id="mainApp" class="vigilis-dashboard" style="display: none;">
         
@@ -98,7 +164,7 @@
             <div class="v-sidebar-menu">
                 <div class="menu-label">DASHBOARD UTAMA</div>
                 <a href="#" class="menu-item active" onclick="switchPage('pageDashboard', this)">
-                    <i class="fas fa-id-badge"></i> <span class="menu-text">PROFIL OFFICER</span>
+                    <i class="fas fa-id-badge"></i> <span class="menu-text">PROFIL PETUGAS</span>
                 </a>
 
                 <div class="menu-label" style="margin-top: 25px;">DATA ICARUS</div>
@@ -175,7 +241,7 @@
 
                 <div class="topbar-info">
                     <i class="fas fa-user-shield" style="color: #fbbf24;"></i>
-                    <span style="color: #cbd5e1; font-size: 12px; font-weight: 700;">OFFICER STATUS: <span id="displayOfficer" style="color: #22c55e;">AKTIF</span></span>
+                    <span style="color: #cbd5e1; font-size: 12px; font-weight: 700;">PETUGAS: <span id="displayOfficer" style="color: #22c55e;">AKTIF</span></span>
                 </div>
             </div>
 
@@ -192,8 +258,8 @@
                 <div class="v-window-body">
                     
                     <div id="pageDashboard" class="page-section active single-pane">
-                        <h2 class="page-title"><i class="fas fa-shield-alt"></i> IDENTITAS & STATUS OFFICER</h2>
-                        <p class="page-desc">Ringkasan profil, status penugasan, dan akumulasi poin keaktifan Anda di dalam Ordo Icarus & Pegasus.</p>
+                        <h2 class="page-title"><i class="fas fa-shield-alt"></i> IDENTITAS PETUGAS</h2>
+                        <p class="page-desc">Ringkasan profil, status penugasan, and akumulasi poin keaktifan Anda di dalam Ordo Icarus.</p>
 
                         <div class="profile-container" style="display: flex; gap: 25px; flex-wrap: wrap; margin-top: 20px;">
                             <div style="flex: 1; min-width: 300px; background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.95)); border: 1px solid rgba(251, 191, 36, 0.2); border-radius: 12px; padding: 30px; box-shadow: 0 15px 30px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 20px;">
@@ -232,7 +298,7 @@
                         </div>
                         <div style="margin-top: 25px; padding: 20px 25px; background: rgba(59, 130, 246, 0.1); border-left: 4px solid #3b82f6; border-radius: 0 8px 8px 0;">
                             <p style="color: #cbd5e1; font-size: 13px; font-style: italic; line-height: 1.6; margin: 0;">
-                                "Selamat datang kembali di Pusat Komando MDT, Officer. Jangan lupa memeriksa misi harian Anda pada menu Milestone Baju Baru dan pastikan seluruh kegiatan patroli Anda terekam dalam Lapor Giat."
+                                "Selamat datang kembali di Administrasi Icarus, Petugas. Jangan lupa memeriksa misi harian Anda pada menu Milestone Baju Baru dan pastikan seluruh kegiatan patroli Anda terekam dalam Lapor Giat."
                             </p>
                         </div>
                     </div>
@@ -504,6 +570,7 @@
                                 <select id="inputMode" class="v-input-dark" style="color: #fbbf24; border-color: rgba(251, 191, 36, 0.3);">
                                     <option value="BARU">PENERBITAN LISENSI BARU</option>
                                     <option value="PERPANJANG">PERPANJANG LISENSI LAMA</option>
+                                    <option value="SHERIFF">PEMBUATAN LISENSI SHERIFF</option>
                                 </select>
                             </div>
                             <div class="form-group full-width">
@@ -580,6 +647,7 @@
 
                         <div class="v-preview-pane">
                             <div class="preview-wrapper">
+                                
                                 <div id="kartuLicensi" class="card-template">
                                     <div class="texture-overlay"><img src="texture-bg.jpg" alt=""></div>
                                     <div class="card-header-image"><img src="header-lisensi.jpg" alt="Header"></div>
@@ -643,7 +711,65 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> 
+
+                                <div id="kartuSheriff" class="card-penerbang" style="display: none; background: url('bg_pelaut_sheriff.png') center/cover no-repeat !important;">
+                                    <div class="cp-left">
+                                        <div class="cp-photo-box">
+                                            <img id="dispFotoSheriff" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="foto-profil" alt="Foto">
+                                            <img src="logo-icarus.png" class="cp-photo-logo" alt="" onerror="this.style.display='none'">
+                                        </div>
+                                        <div class="cp-no-lisensi">
+                                            <label>NOMOR LISENSI</label>
+                                            <div id="dispRegSheriff">SR/IC-0000</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="cp-right">
+                                        <div class="cp-name-label">NAMA LENGKAP</div>
+                                        <div class="cp-name-value" id="dispNamaSheriff">- NAMA LENGKAP -</div>
+                                        
+                                        <div class="cp-grid">
+                                            <div class="cp-field">
+                                                <span class="cp-field-label">INSTITUTION</span>
+                                                <span class="cp-field-value" id="dispInstSheriff">- INSTITUTION -</span>
+                                            </div>
+                                            <div class="cp-field">
+                                                <span class="cp-field-label">DATE OF BIRTH</span>
+                                                <span class="cp-field-value" id="dispDobSheriff">-</span>
+                                            </div>
+                                            <div class="cp-field">
+                                                <span class="cp-field-label">RATING</span>
+                                                <span class="cp-field-value" id="dispRatingSheriff">- RATING -</span>
+                                            </div>
+                                            <div class="cp-field">
+                                                <span class="cp-field-label">CALL SIGN</span>
+                                                <span class="cp-field-value" id="dispCallsignSheriff">- CALLSIGN -</span>
+                                            </div>
+                                            <div class="cp-field">
+                                                <span class="cp-field-label">ISSUING AUTHORITY</span>
+                                                <span class="cp-field-value" id="dispAuthSheriff">SHERIFF ROXWOOD</span>
+                                            </div>
+                                            <div class="cp-field">
+                                                <span class="cp-field-label">JENIS KELAMIN</span>
+                                                <span class="cp-field-value" id="dispGenderSheriff">- L/P -</span>
+                                            </div>
+                                            <div class="cp-field" style="margin-top: 5px;">
+                                                <span class="cp-field-label">BERLAKU HINGGA</span>
+                                                <span class="cp-field-value" id="dispExpiredSheriff" style="color: #ff0000;">- TANGGAL -</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="cp-footer-text">
+                                        THIS CERTIFIES THAT THE BEARER IS AUTHORIZED TO OPERATE REGISTERED VESSELS WITHIN THE JURISDICTION OF ROXWOOD, STRICTLY LIMITED TO THE RATINGS HELD AND DOCUMENTED.
+                                    </div>
+                                    
+                                    <div class="signature-row" style="position: absolute; bottom: 20px; right: 40px; width: 150px;">
+                                        <div id="autoSigSheriff" class="auto-signature" style="color: #0f172a; text-shadow: none;"></div>
+                                    </div>
+                                </div> 
+
                             </div>
                         </div>
                     </div>
@@ -676,10 +802,15 @@
 
                     <div id="pageLisensiPenerbang" class="page-section">
                         <style>
+                            #kartuSheriff .cp-field-value { color: #000000 !important; }
+                            #kartuSheriff #dispExpiredSheriff { color: #ff0000 !important; }
+                            #kartuSheriff .cp-no-lisensi div { color: #000000 !important; }
+                            #kartuSheriff .cp-footer-text { color: #4c4c4c !important; }
+                            #kartuSheriff .cp-no-lisensi label { color: #cbcbcb !important; }
                             .card-penerbang {
                                 width: 720px;
                                 height: 450px;
-                                background: #ffffff url('lisensi penerbang.png') center/cover no-repeat !important;
+                                background: #ffffff url('lisensi_penerbang.png') center/cover no-repeat !important;
                                 border-radius: 12px;
                                 box-shadow: 0 20px 50px rgba(0,0,0,0.8);
                                 position: relative;
@@ -690,23 +821,52 @@
                             .cp-header { position: absolute; top: 25px; left: 0; width: 100%; text-align: center; z-index: 5; }
                             .cp-header h1 { color: #17366b; font-size: 28px; font-weight: 800; margin: 0; letter-spacing: 1px; text-shadow: 0 1px 2px rgba(255,255,255,0.8); }
                             .cp-header h2 { color: #334155; font-size: 14px; font-weight: 700; letter-spacing: 8px; margin: 4px 0 10px 0; }
-                            .cp-header-line { width: 82%; height: 4px; background: #17366b; margin: 0 auto; }
-                            .cp-left { position: absolute; top: 115px; left: 45px; width: 150px; display: flex; flex-direction: column; align-items: center; z-index: 5; }
-                            .cp-photo-box { width: 140px; height: 190px; background: #ffffff; border: 2px solid #cbd5e1; border-radius: 8px; padding: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); position: relative; }
-                            .cp-photo-box img.foto-profil { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; }
+                            .cp-header-line { width: 82%; height: 4px; background: #17366b; margin: 0 auto; margin-top: 22px }
+                            .cp-left { position: absolute; top: 130px; left: 45px; width: 150px; display: flex; flex-direction: column; align-items: center; z-index: 5; }
+                            
+                            .logo-rx2 {
+                                position: absolute;
+                                bottom: -20px; 
+                                right: -10px; 
+                                width: 65px; 
+                                height: auto; 
+                                z-index: 10; 
+                                opacity: 0.5; 
+                            }
+                            .cp-photo-box { 
+                                width: 165px; 
+                                height: 210px; 
+                                border: 0.5px solid #cbd5e1; 
+                                border-radius: 6px; 
+                                padding: 0; 
+                                box-shadow: 0 4px 15px rgba(0,0,0,0.15); 
+                                position: relative; 
+                                box-sizing: border-box;
+                                background-color: transparent; 
+                                background-image: url('background_pas_penerbang.png'); 
+                                background-size: cover;
+                                background-position: center;
+                            }
+                            .cp-photo-box img.foto-profil { 
+                                width: 100% !important; 
+                                height: 100% !important; 
+                                border-radius: -2px; 
+                                object-fit: cover !important; 
+                                object-position: center top !important; 
+                                background-image: none !important; 
+                            }
                             .cp-photo-logo { position: absolute; top: 8px; right: 8px; width: 25px; opacity: 0.9; }
-                            .cp-no-lisensi { margin-top: 15px; text-align: center; }
+                            .cp-no-lisensi { margin-top: -3px; text-align: center; }
                             .cp-no-lisensi label { font-size: 9px; font-weight: 800; color: #64748b; }
-                            .cp-no-lisensi div { font-size: 18px; font-weight: 800; color: #0f172a; margin-top: 2px; letter-spacing: 1px; }
-                            .cp-right { position: absolute; top: 110px; left: 220px; width: 450px; z-index: 5; }
+                            .cp-no-lisensi div { font-size: 18px; font-weight: 800; color: #0f172a; margin-top: 2px; letter-spacing: 1px; font-family:'Courier New', Courier, monospace;}
+                            .cp-right { position: absolute; top: 130px; left: 220px; width: 450px; z-index: 5; }
                             .cp-name-label { font-size: 10px; font-weight: 800; color: #17366b; margin-bottom: 2px; }
                             .cp-name-value { font-size: 24px; font-weight: 800; color: #17366b; text-transform: uppercase; margin-bottom: 18px; line-height: 1; }
                             .cp-grid { display: grid; grid-template-columns: 1fr 1fr; row-gap: 12px; column-gap: 20px; }
                             .cp-field { display: flex; flex-direction: column; }
                             .cp-field-label { font-size: 9px; font-weight: 800; color: #64748b; margin-bottom: 2px; text-transform: uppercase; }
                             .cp-field-value { font-size: 13px; font-weight: 800; color: #0f172a; text-transform: uppercase; }
-                            .cp-indopride-logo { position: absolute; top: 110px; right: 40px; width: 65px; opacity: 0.9; }
-                            .cp-footer-text { position: absolute; bottom: 40px; left: 220px; width: 330px; font-size: 7px; font-weight: 800; color: #64748b; text-align: justify; line-height: 1.4; }
+                            .cp-footer-text { position: absolute; bottom: 60px; left: 220px; width: 360px; font-size: 7px; font-weight: 800; color: #64748b; text-align: justify; line-height: 1.4; }
                             #dispPetugasHeli { display: none; }
                         </style>
 
@@ -745,10 +905,7 @@
                                             <option value="VP">VP</option><option value="MD">MD</option>
                                             <option value="GV">GV</option><option value="CV">CV</option>
                                         </select>
-                                        <select id="inputCallsignHeliB" class="v-input-dark" style="flex: 1;">
-                                            <option value="00">00</option><option value="01">01</option>
-                                            <option value="02">02</option><option value="03">03</option>
-                                        </select>
+                                        <input type="text" id="inputCallsignHeliB" class="v-input-dark" style="flex: 1;" placeholder="Angka (Cth: 03)" maxlength="3">
                                     </div>
                                 </div>
                             </div>
@@ -799,13 +956,13 @@
                                         <div class="cp-header-line"></div>
                                     </div>
 
-                                    <img src="logo-indopride.png" alt="Indopride" class="cp-indopride-logo" onerror="this.style.display='none'">
-
                                     <div class="cp-left">
                                         <div class="cp-photo-box">
                                             <img id="dispFotoHeli" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="foto-profil" alt="Foto">
                                             <img src="logo-icarus.png" class="cp-photo-logo" alt="" onerror="this.style.display='none'">
+                                            <img src="rx2.png" alt="Logo RX2" class="logo-rx2"> 
                                         </div>
+
                                         <div class="cp-no-lisensi">
                                             <label>NOMOR LISENSI</label>
                                             <div id="dispRegHeli">SR/IC-0000</div>
@@ -843,7 +1000,7 @@
                                             </div>
                                             <div class="cp-field" style="margin-top: 5px;">
                                                 <span class="cp-field-label">BERLAKU HINGGA</span>
-                                                <span class="cp-field-value" id="dispExpiredHeli" style="color: #dc2626;">- TANGGAL -</span>
+                                                <span class="cp-field-value" id="dispExpiredHeli" style="color: #ff0000;">- TANGGAL -</span>
                                             </div>
                                         </div>
                                     </div>
@@ -901,10 +1058,8 @@
                                     <label>KATEGORI BARANG SITAAN</label>
                                     <select id="inputKategoriSita" class="v-input-dark">
                                         <option value="Hasil Laut Ilegal">Hasil Laut Ilegal (Illegal Fishing)</option>
-                                        <option value="Penyelundupan Satwa">Penyelundupan Satwa Liar</option>
-                                        <option value="Narkotika & Obat">Narkotika & Obat Terlarang</option>
                                         <option value="Senjata Ilegal">Senjata Api / Tajam Ilegal</option>
-                                        <option value="Barang Selundupan">Kontraband / Barang Selundupan Lainnya</option>
+                                        <option value="Barang Selundupan">Barang Selundupan Lainnya/MICIN KECUBUNG</option>
                                     </select>
                                 </div>
                             </div>
@@ -912,13 +1067,13 @@
                             <div class="form-row">
                                 <div class="form-group" style="flex: 2;">
                                     <label>DETAIL BARANG & JUMLAH</label>
-                                    <input type="text" id="inputDetailSita" class="v-input-dark" placeholder="Contoh: 50 Kg Ikan Pari, 2 Unit AK-47, dll.">
+                                    <input type="text" id="inputDetailSita" class="v-input-dark" placeholder="Contoh: Penyu,Ikan Hiu, dll.">
                                 </div>
                                 <div class="form-group" style="flex: 1;">
                                     <label>STATUS BARANG</label>
                                     <select id="inputStatusSita" class="v-input-dark">
-                                        <option value="DISIMPAN">DISIMPAN DI GUDANG</option>
-                                        <option value="DISERAHKAN">DISERAHKAN KE KEPOLISIAN</option>
+                                        <option value="DISIMPAN">DISIMPAN DI BRANGKAS</option>
+                                        <option value="DISERAHKAN">DISERAHKAN KE LEGON</option>
                                         <option value="DIMUSNAHKAN">TELAH DIMUSNAHKAN</option>
                                     </select>
                                 </div>
@@ -926,7 +1081,7 @@
 
                             <div class="form-group full-width" style="margin-top: 5px;">
                                 <label>LOKASI PENYITAAN</label>
-                                <input type="text" id="inputLokasiSita" class="v-input-dark" placeholder="Titik lokasi pencegatan / penyitaan...">
+                                <input type="text" id="inputLokasiSita" class="v-input-dark" placeholder="Titik lokasi penemuan / penyitaan...">
                             </div>
 
                             <button id="btnSimpanSitaan" class="v-btn-action" style="padding: 12px; width: 100%; margin-top: 15px; background: #eab308; color: #000;"><i class="fas fa-save"></i> CATAT BARANG BUKTI</button>
@@ -1061,7 +1216,7 @@
 
                     <div id="pageAudit" class="page-section single-pane">
                         <h2 class="page-title"><i class="fas fa-history"></i> LOG AKTIVITAS PETUGAS</h2>
-                        <p class="page-desc">Rekam jejak tindakan real-time seluruh operator yang masuk ke sistem administrasi MDT Icarus.</p>
+                        <p class="page-desc">Rekam jejak tindakan real-time seluruh operator yang masuk ke sistem administrasi Icarus.</p>
                         <table class="v-table">
                             <thead>
                                 <tr>
