@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     
-    // =========================================================
-    // FITUR JAM REAL-TIME DI TOPBAR (ZONA WAKTU WIB / JAKARTA)
-    // =========================================================
+    
     function updateClock() {
         const clockEl = document.getElementById('realtimeClock');
         if (clockEl) {
@@ -20,9 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setInterval(updateClock, 1000);
     updateClock(); 
     
-    // =========================================================
-    // KONFIGURASI FIREBASE & SISTEM API
-    // =========================================================
+    
     const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1499607345662263426/ub8BLgxS1Vos7CLPxNebpMvYfDPvyud0OxieBmdoQc_3BRdxfCgAskEq1L0dzhBGQdM_";
     const REMOVE_BG_API_KEY = "917739b494cdf21de56a1043297ef3de4aea263d3cd7da319627f18dde7944b170470a92aa59cd32871620a115fef09a";
 
@@ -55,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
         database.ref('audit_logs').push({ waktu: timestamp, petugas: officerCallsign, tindakan: action, keterangan: detail });
     }
 
-    // === DATABASE IDENTITAS OFFICER ===
+    
     const officerDatabase = {
         "admin@icarus.com": { callsign: "Admin 01", nama: "Admin", status: "PIMPINAN ORDO ICARUS" },
         "francis@icarus.com": { callsign: "MAVERICK 01", nama: "Sir Francis Drake", status: "PIMPINAN ORDO ICARUS" },
@@ -63,9 +59,9 @@ document.addEventListener("DOMContentLoaded", () => {
         "leonard@icarus.com": { callsign: "ORION 02", nama: "Leonard Willy", status: "PIMPINAN ORDO ICARUS", signatureImg: "link_gambar_tanda_tangan_kamu3.png"},
         "grecia@icarus.com": { callsign: "ORION 03", nama: "Grecia F Nakagawa", status: "PIMPINAN ORDO ICARUS" },
         "natanael@icarus.com": { callsign: "VP - 01", nama: "Natanael Pardede", status: "ANGGOTA ORDO ICARUS" },
-        "senna@icarus.com": { callsign: "VP - 02", nama: "Senna Aduivat", status: "ANGGOTA ORDO ICARUS" , signatureImg: "link_gambar_tanda_tangan_kamu1.png" },
-        "glenn@icarus.com": { callsign: "VP - 03", nama: "Glenn Jacob", status: "ANGGOTA ORDO ICARUS", signatureImg: "link_gambar_tanda_tangan_kamu1.png" },
-        "kael@icarus.com": { callsign: "VP - 05", nama: "Kael Kaizer", status: "ANGGOTA ORDO ICARUS" },
+        "senna@icarus.com": { callsign: "ORION - 04", nama: "Senna Aduivat", status: "PIMPINAN ORDO ICARUS" , signatureImg: "link_gambar_tanda_tangan_kamu1.png" },
+        "glenn@icarus.com": { callsign: "VP - 03", nama: "Glenn Jacob", status: "PIMPINAN ORDO ICARUS", signatureImg: "link_gambar_tanda_tangan_kamu1.png", profileImg: "glenn_foto.png"},
+        "kael@icarus.com": { callsign: "VP - 05", nama: "Kael Kaizer", status: "PIMPINAN ORDO ICARUS" },
         "christopher@icarus.com": { callsign: "VP - 06", nama: "Christopher F Lee", status: "ANGGOTA ORDO ICARUS" },
         "chrystalea@icarus.com": { callsign: "VP - 07", nama: "Chrystalea F Lee", status: "ANGGOTA ORDO ICARUS" },
         "bayu@icarus.com": { callsign: "VP - 08", nama: "Bayu S Sidharta", status: "ANGGOTA ORDO ICARUS" },
@@ -77,38 +73,19 @@ document.addEventListener("DOMContentLoaded", () => {
         "michael@icarus.com": { callsign: "VP - 14", nama: "Michael Larosso", status: "ANGGOTA ORDO ICARUS" },
         "natsu@icarus.com": { callsign: "VP - 15", nama: "Natsu Ky Sukemprot", status: "ANGGOTA ORDO ICARUS" },
         "dandy@icarus.com": { callsign: "VP - 16", nama: "Dandy C. Putra", status: "ANGGOTA ORDO ICARUS" },
-        "mavis@pegasus.com": { callsign: "GA - 01", nama: "Mavis Aprilia", status: "PIMPINAN UNIT PEGASUS", signatureImg: "link_gambar_tanda_tangan_kamu.png" },
-        "arfay@pegasus.com": { callsign: "PG - 01", nama: "Arfay Abinawa", status: "PIMPINAN UNIT PEGASUS" },
-        "avent@pegasus.com": { callsign: "PG - 02", nama: "Avent Antares", status: "PIMPINAN UNIT PEGASUS" },
-        "kazumna@pegasus.com": { callsign: "PG - 03", nama: "Kazumna", status: "PIMPINAN UNIT PEGASUS" },
-        "mereleon@pegasus.com": { callsign: "PG - 04", nama: "Mereleon Silva", status: "PIMPINAN UNIT PEGASUS" },
-        "nevan@pegasus.com": { callsign: "PG - 05", nama: "Nevan C Percival", status: "PIMPINAN UNIT PEGASUS" },
-        "alexandro@pegasus.com": { callsign: "PG - 06", nama: "Alexandro D Lombardi", status: "PIMPINAN UNIT PEGASUS" },
-        "gopal@pegasus.com": { callsign: "PG - 07", nama: "Gopal S Maynard", status: "ANGGOTA UNIT PEGASUS" },
-        "hexy@pegasus.com": { callsign: "PG - 08", font: "Hexy Xander", status: "ANGGOTA UNIT PEGASUS" },
-        "rafale@pegasus.com": { callsign: "PG - 09", nama: "Rafale Osmund", status: "ANGGOTA UNIT PEGASUS" },
-        "baby@pegasus.com": { callsign: "PG - 10", nama: "Baby Joo", status: "ANGGOTA UNIT PEGASUS" },
-        "alvaerico@pegasus.com": { callsign: "PG - 11", nama: "Alverico M. Allarick", status: "ANGGOTA UNIT PEGASUS" },
-        "adelino@pegasus.com": { callsign: "PG - 12", nama: "Adelio B Tjendana", status: "ANGGOTA UNIT PEGASUS" },
-        "bailey@pegasus.com": { callsign: "PG - 13", nama: "Bailey C. Hayashi", status: "ANGGOTA UNIT PEGASUS" },
-        "lenzy@pegasus.com": { callsign: "PG - 14", nama: "Lenzy W Rayel", status: "ANGGOTA UNIT PEGASUS" },
-        "arion@pegasus.com": { callsign: "PG - 15", nama: "Arion Andara", status: "ANGGOTA UNIT PEGASUS" },
-        "nemo@pegasus.com": { callsign: "PG - 16", nama: "Nemo Alviano", status: "ANGGOTA UNIT PEGASUS" },
-        "dobleh@pegasus.com": { callsign: "PG - 17", nama: "Dobleh Kobleh", status: "ANGGOTA UNIT PEGASUS" }
+        "calvin@icarus.com": { callsign: "VP - 16", nama: "Calvin R. Lewis", status: "ANGGOTA ORDO ICARUS" }
     };
 
-    // =========================================================
-    // FITUR: MANAJEMEN OTORISASI DAN ROLE-BASED ACCESS
-    // =========================================================
+    
 function applyOfficerIdentity(email) {
         const officer = officerDatabase[email.toLowerCase()];
         if (officer) {
-            // SETTING TOPBAR & INPUT HIDDEN
+            
             document.getElementById('inputOfficer').value = officer.callsign;
             document.getElementById('displayOfficer').innerText = officer.callsign;
             document.getElementById('displayUnit').innerText = officer.status; 
             
-            // SETTING TANDA TANGAN KARTU
+            
             const sigElement = document.getElementById('autoSignature');
             if (officer.signatureImg) {
                 sigElement.innerHTML = `<img src="${officer.signatureImg}" style="height: 60px; width: auto; object-fit: contain;">`;
@@ -118,9 +95,7 @@ function applyOfficerIdentity(email) {
                 sigElement.style.fontFamily = "'Great Vibes', cursive";
             }
 
-            // =======================================================
-            // UPDATE DATA UNTUK HALAMAN DASHBOARD PROFIL
-            // =======================================================
+            
             const dashNama = document.getElementById('dashNama');
             const dashCallsign = document.getElementById('dashCallsign');
             const dashUnitDetail = document.getElementById('dashUnitDetail');
@@ -130,13 +105,19 @@ function applyOfficerIdentity(email) {
             if (dashCallsign) dashCallsign.innerText = officer.callsign;
             if (dashUnitDetail) dashUnitDetail.innerText = officer.status;
 
-            // Inisial foto profil menggunakan API pembuat Avatar otomatis
-            if (dashFoto && officer.nama) {
-                const namaUrl = encodeURIComponent(officer.nama);
-                dashFoto.src = `https://ui-avatars.com/api/?name=${namaUrl}&background=0f172a&color=fbbf24&size=150&bold=true`;
+            
+            if (dashFoto && officer) {
+                if (officer.profileImg) {
+                    
+                    dashFoto.src = officer.profileImg;
+                } else if (officer.nama) {
+                    
+                    const namaUrl = encodeURIComponent(officer.nama);
+                    dashFoto.src = `https://ui-avatars.com/api/?name=${namaUrl}&background=0f172a&color=fbbf24&size=150&bold=true`;
+                }
             }
 
-            // MENARIK POIN DARI FIREBASE SECARA REAL-TIME KE DASHBOARD
+           
             const dashPoin = document.getElementById('dashPoin');
             const dashStatus = document.getElementById('dashStatus');
             const safeCallsign = officer.callsign.replace(/\s+/g, ''); // Format "VP - 03" jadi "VP-03"
@@ -158,9 +139,7 @@ function applyOfficerIdentity(email) {
                 }
             });
 
-            // =======================================================
-            // KONTROL AKSES KHUSUS PIMPINAN (OTORISASI MENU)
-            // =======================================================
+            
             const isPimpinan = officer.status.includes("PIMPINAN");
             
             document.getElementById('menuStatistik').style.display = isPimpinan ? 'flex' : 'none';
@@ -172,36 +151,52 @@ function applyOfficerIdentity(email) {
         }
     }
 
-    // === AUTH & SISTEM LOGIN ===
-    const loginScreen = document.getElementById('loginScreen');
+
+    const landingWrapper = document.getElementById('landingWrapper'); // ID Wrapper baru
     const mainApp = document.getElementById('mainApp');
     const loginError = document.getElementById('loginError');
-    const aboutModal = document.getElementById('aboutModal');
     const linkAbout = document.getElementById('linkAbout');
-    const closeAbout = document.getElementById('closeAbout');
+    const aboutSection = document.getElementById('aboutSection');
 
-    if(linkAbout && aboutModal && closeAbout) {
+    
+    if(linkAbout && aboutSection) {
         linkAbout.onclick = (e) => {
             e.preventDefault();
-            aboutModal.style.display = 'flex';
+            aboutSection.scrollIntoView({ behavior: 'smooth' }); 
         };
-        closeAbout.onclick = () => {
-            aboutModal.style.display = 'none';
-        };
-        // Menutup modal jika user klik area luar kotak
-        window.addEventListener('click', (e) => {
-            if (e.target === aboutModal) {
-                aboutModal.style.display = 'none';
-            }
-        });
     }
 
+    
+
+    auth.onAuthStateChanged((user) => {
+        if (user) { 
+            const emailUser = user.email.toLowerCase();
+            if (officerDatabase[emailUser]) {
+                applyOfficerIdentity(emailUser); 
+                
+                
+                if(landingWrapper) landingWrapper.style.display = "none"; 
+                if(mainApp) mainApp.style.display = "flex"; 
+                triggerInitialValues();
+            } else {
+                auth.signOut();
+                showAlert("Akses Ilegal", "Email Anda tidak terdaftar sebagai petugas resmi Icarus.", "error");
+            }
+        }
+    });
+
     document.getElementById('btnLogin').onclick = () => {
-        const email = document.getElementById('loginEmail').value;
-        const pass = document.getElementById('loginPassword').value;
+       
+        let email = document.getElementById('inputOfficer').value.trim();
+        const pass = document.getElementById('inputPassword').value;
         const btn = document.getElementById('btnLogin');
         
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Otorisasi...';
+        
+        if (email !== "" && !email.includes('@')) {
+            email += "@icarus.com";
+        }
+
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> OTORISASI...';
         btn.disabled = true;
 
         auth.signInWithEmailAndPassword(email, pass)
@@ -210,17 +205,31 @@ function applyOfficerIdentity(email) {
                 setTimeout(() => { location.reload(); }, 1500);
             })
             .catch(() => { 
-                btn.innerHTML = 'MASUK SISTEM'; btn.disabled = false;
-                loginError.innerText = "Akses Ditolak! Cek Kredensial Anda."; loginError.style.display = "block"; 
+                btn.innerHTML = '<span>OTORISASI AKSES</span><i class="fas fa-terminal"></i>'; 
+                btn.disabled = false;
+                if(loginError) {
+                    loginError.innerText = "Akses Ditolak! Cek Kredensial Anda."; 
+                    loginError.style.display = "block"; 
+                } else {
+                    showAlert("Akses Ditolak", "Email atau Password Salah.", "error");
+                }
             });
     };
 
     auth.onAuthStateChanged((user) => {
         if (user) { 
-            applyOfficerIdentity(user.email); 
-            loginScreen.style.display = "none"; 
-            mainApp.style.display = "flex"; 
-            triggerInitialValues();
+            const emailUser = user.email.toLowerCase();
+            
+            if (officerDatabase[emailUser]) {
+                applyOfficerIdentity(emailUser); 
+                if(loginScreen) loginScreen.style.display = "none"; 
+                if(mainApp) mainApp.style.display = "flex"; 
+                triggerInitialValues();
+            } else {
+                
+                auth.signOut();
+                showAlert("Akses Ilegal", "Email Anda tidak terdaftar sebagai petugas resmi Icarus.", "error");
+            }
         }
     });
 
@@ -229,7 +238,7 @@ function applyOfficerIdentity(email) {
         setTimeout(() => { auth.signOut().then(() => location.reload()); }, 500); 
     };
 
-    // === COUNTER PENOMORAN OTOMATIS LISENSI PELAUT ===
+    
     let currentLastRegNum = 1000; 
     const inputReg = document.getElementById('inputRegistrasi');
     const displayReg = document.getElementById('displayRegistrasi');
@@ -247,15 +256,71 @@ function applyOfficerIdentity(email) {
 
     if(inputMode) {
         inputMode.addEventListener('change', () => {
+            const kartuLicensi = document.getElementById('kartuLicensi');
+            const kartuSheriff = document.getElementById('kartuSheriff');
+            
+            
+            const lblPekerjaan = document.querySelector('label[for="inputPekerjaan"]');
+            const inputPekerjaan = document.getElementById('inputPekerjaan');
+            const lblNoKapal = document.querySelector('label[for="inputNoKapal"]');
+            const inputNoKapal = document.getElementById('inputNoKapal');
+            const lblJabatan = document.querySelector('label[for="inputJabatan"]');
+            const inputJabatan = document.getElementById('inputJabatan');
+            
+            
+            const inputImo = document.getElementById('inputImo');
+            const inputNoTelp = document.getElementById('inputNoTelp');
+            const formGroupImo = inputImo ? inputImo.closest('.form-group') : null;
+            const formGroupTelp = inputNoTelp ? inputNoTelp.closest('.form-group') : null;
+
+            if (inputMode.value === "BARU" || inputMode.value === "PERPANJANG") {
+               
+                if(lblPekerjaan) lblPekerjaan.innerText = "PEKERJAAN";
+                if(inputPekerjaan) inputPekerjaan.placeholder = "Contoh: PELAUT";
+                if(lblNoKapal) lblNoKapal.innerText = "NOMOR PLAT KAPAL";
+                if(inputNoKapal) inputNoKapal.placeholder = "Nomor Lambung / Plat";
+                if(lblJabatan) lblJabatan.innerText = "JABATAN";
+                if(inputJabatan) inputJabatan.placeholder = "KAPTEN KAPAL";
+                
+                if(formGroupImo) formGroupImo.style.display = "flex";
+                if(formGroupTelp) formGroupTelp.style.display = "flex";
+                
+            } else if (inputMode.value === "SHERIFF") {
+                
+                if(lblPekerjaan) lblPekerjaan.innerText = "INSTITUTION";
+                if(inputPekerjaan) inputPekerjaan.placeholder = "Contoh: SHERIFF ROXWOOD";
+                if(lblNoKapal) lblNoKapal.innerText = "CALL SIGN";
+                if(inputNoKapal) inputNoKapal.placeholder = "Contoh: VP - 00";
+                if(lblJabatan) lblJabatan.innerText = "RATING";
+                if(inputJabatan) inputJabatan.placeholder = "Contoh: ALL TYPE";
+                
+                if(formGroupImo) formGroupImo.style.display = "none";
+                if(formGroupTelp) formGroupTelp.style.display = "flex";
+            }
+
+           
             if (inputMode.value === "BARU") {
                 const nextReg = `PL-${currentLastRegNum + 1}`;
-                inputReg.value = nextReg;
-                displayReg.innerText = nextReg;
+                if(inputReg) inputReg.value = nextReg;
+                if(displayReg) displayReg.innerText = nextReg;
                 if(btnCariData) btnCariData.style.display = "none";
+                if(kartuLicensi) kartuLicensi.style.display = "flex";
+                if(kartuSheriff) kartuSheriff.style.display = "none";
+
             } else if (inputMode.value === "PERPANJANG") {
-                inputReg.value = ""; 
-                displayReg.innerText = "-";
+                if(inputReg) inputReg.value = ""; 
+                if(displayReg) displayReg.innerText = "-";
                 if(btnCariData) btnCariData.style.display = "block";
+                if(kartuLicensi) kartuLicensi.style.display = "flex";
+                if(kartuSheriff) kartuSheriff.style.display = "none";
+
+            } else if (inputMode.value === "SHERIFF") {
+                const nextReg = `SR/IC-${currentLastRegNum + 1}`; 
+                if(inputReg) inputReg.value = nextReg;
+                document.getElementById('dispRegSheriff').innerText = nextReg;
+                if(btnCariData) btnCariData.style.display = "none";
+                if(kartuLicensi) kartuLicensi.style.display = "none"; 
+                if(kartuSheriff) kartuSheriff.style.display = "block"; 
             }
         });
     }
@@ -286,7 +351,7 @@ function applyOfficerIdentity(email) {
         };
     }
 
-    // === COUNTER PENOMORAN OTOMATIS LISENSI PENERBANG ===
+    
     let currentLastHeliNum = 0;
     database.ref('last_heli_number').on('value', (snapshot) => {
         currentLastHeliNum = snapshot.exists() ? snapshot.val() : 0;
@@ -297,7 +362,7 @@ function applyOfficerIdentity(email) {
         if (dispRegHeli) dispRegHeli.innerText = nextRegHeli;
     });
 
-    // === PERIKSA INPUT & SINKRONISASI LIVE KARTU PELAUT ===
+    
     function bindInput(inputId, displayId, prefix = "") {
         const input = document.getElementById(inputId);
         const display = document.getElementById(displayId);
@@ -323,6 +388,29 @@ function applyOfficerIdentity(email) {
     bindInput('inputImo', 'displayImo', ': ');
     bindInput('inputNoKapal', 'displayNoKapal', ': ');
     bindInput('inputOfficer', 'displayOfficer', '');
+    
+    bindInput('inputNama', 'dispNamaSheriff', '');
+    bindInput('inputGender', 'dispGenderSheriff', '');
+    bindInput('inputPekerjaan', 'dispInstSheriff', '');
+    bindInput('inputJabatan', 'dispRatingSheriff', '');
+    bindInput('inputNoKapal', 'dispCallsignSheriff', '');
+    bindInput('inputRegistrasi', 'dispRegSheriff', '');
+    bindInput('inputExpired', 'dispExpiredSheriff', '');
+
+    
+    const inDob = document.getElementById('inputDob');
+    if (inDob) {
+        inDob.addEventListener('change', (e) => {
+            const dVal = new Date(e.target.value);
+            if (!isNaN(dVal)) {
+                const mNames = ["JANUARI", "FEBRUARI", "MARET", "APRIL", "MEI", "JUNI", "JULI", "AGUSTUS", "SEPTEMBER", "OKTOBER", "NOVEMBER", "DESEMBER"];
+                const dispDobS = document.getElementById('dispDobSheriff');
+                if (dispDobS) {
+                    dispDobS.innerText = `${String(dVal.getDate()).padStart(2, '0')} ${mNames[dVal.getMonth()]} ${dVal.getFullYear()}`;
+                }
+            }
+        });
+    }
 
     const inputPekerjaanDynamic = document.getElementById('inputPekerjaan');
     const displayPillsTitle = document.getElementById('displayPillsTitle');
@@ -343,9 +431,7 @@ function applyOfficerIdentity(email) {
         });
     }
 
-    // =========================================================
-    // SINKRONISASI LIVE KARTU LISENSI PENERBANG
-    // =========================================================
+   
     bindInput('inputNamaHeli', 'dispNamaHeli', '');
     bindInput('inputInstHeli', 'dispInstHeli', '');
     bindInput('inputRatingHeli', 'dispRatingHeli', '');
@@ -361,17 +447,25 @@ function applyOfficerIdentity(email) {
     }
 
     const inputDobHeli = document.getElementById('inputDobHeli');
-    const dispDobHeli = document.getElementById('dispDobHeli');
-    if (inputDobHeli && dispDobHeli) {
-        inputDobHeli.addEventListener('change', () => {
-            const dateVal = new Date(inputDobHeli.value);
-            if (!isNaN(dateVal)) {
-                dispDobHeli.innerText = `${String(dateVal.getDate()).padStart(2, '0')}/${String(dateVal.getMonth() + 1).padStart(2, '0')}/${dateVal.getFullYear()}`;
-            } else {
-                dispDobHeli.innerText = '-';
-            }
-        });
-    }
+        const dispDobHeli = document.getElementById('dispDobHeli');
+        if (inputDobHeli && dispDobHeli) {
+            inputDobHeli.addEventListener('change', () => {
+                const dateVal = new Date(inputDobHeli.value);
+                if (!isNaN(dateVal)) {
+                    
+                    const shortMonths = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+                    
+                    const day = String(dateVal.getDate()).padStart(2, '0');
+                    const month = shortMonths[dateVal.getMonth()];
+                    const year = dateVal.getFullYear();
+                    
+                    
+                    dispDobHeli.innerText = `${day} ${month} ${year}`;
+                } else {
+                    dispDobHeli.innerText = '-';
+                }
+            });
+        }
 
     const updateCallsignHeli = () => {
         const valA = document.getElementById('inputCallsignHeliA').value;
@@ -390,9 +484,12 @@ function applyOfficerIdentity(email) {
     const inputExpHeli = document.getElementById('inputExpiredHeli');
     const dispExpHeliText = document.getElementById('dispExpiredHeli'); 
     function setExpirationHeli(months) {
+        
         let d = new Date(); d.setMonth(d.getMonth() + months);
         const mNames = ["JANUARI", "FEBRUARI", "MARET", "APRIL", "MEI", "JUNI", "JULI", "AGUSTUS", "SEPTEMBER", "OKTOBER", "NOVEMBER", "DESEMBER"];
         let str = `${String(d.getDate()).padStart(2, '0')} ${mNames[d.getMonth()]} ${d.getFullYear()}`;
+        
+        
         if (inputExpHeli) inputExpHeli.value = str; 
         if (dispExpHeliText) dispExpHeliText.innerHTML = str.toUpperCase();
     }
@@ -403,18 +500,21 @@ function applyOfficerIdentity(email) {
     if(btnPlus2Heli) btnPlus2Heli.onclick = () => setExpirationHeli(2);
     if(btnPlus3Heli) btnPlus3Heli.onclick = () => setExpirationHeli(3);
 
-    // =========================================================
-    // SINKRONISASI TANGGAL & IMAGE CROPPER UNIVERSAL
-    // =========================================================
+    
     const inputExp = document.getElementById('inputExpired');
     const displayExpText = document.getElementById('displayExpiredText'); 
     function setExpiration(months) {
-        let d = new Date(); d.setMonth(d.getMonth() + months);
-        const mNames = ["JANUARI", "FEBRUARI", "MARET", "APRIL", "MEI", "JUNI", "JULI", "AGUSTUS", "SEPTEMBER", "OKTOBER", "NOVEMBER", "DESEMBER"];
-        let str = `${String(d.getDate()).padStart(2, '0')} ${mNames[d.getMonth()]} ${d.getFullYear()}`;
-        if(inputExp) inputExp.value = str; 
-        if(displayExpText) displayExpText.innerHTML = str.toUpperCase();
-    }
+     let d = new Date(); d.setMonth(d.getMonth() + months);
+     const mNames = ["JANUARI", "FEBRUARI", "MARET", "APRIL", "MEI", "JUNI", "JULI", "AGUSTUS", "SEPTEMBER", "OKTOBER", "NOVEMBER", "DESEMBER"];
+     let str = `${String(d.getDate()).padStart(2, '0')} ${mNames[d.getMonth()]} ${d.getFullYear()}`;
+
+     if(inputExp) inputExp.value = str; 
+     if(displayExpText) displayExpText.innerHTML = str.toUpperCase();
+
+     
+     const dispExpiredSheriff = document.getElementById('dispExpiredSheriff');
+     if (dispExpiredSheriff) dispExpiredSheriff.innerHTML = str.toUpperCase();
+ }
     const bPlus1 = document.getElementById('btnPlus1');
     const bPlus2 = document.getElementById('btnPlus2');
     const bPlus3 = document.getElementById('btnPlus3');
@@ -427,7 +527,7 @@ function applyOfficerIdentity(email) {
     const dIssueDate = document.getElementById('displayIssueDate');
     if(dIssueDate) dIssueDate.innerText = `${String(today.getDate()).padStart(2, '0')} ${mNamesIndo[today.getMonth()]} ${today.getFullYear()}`;
 
-    // Sistem Cropper Terpadu (Untuk Pelaut & Penerbang)
+    
     let cropper;
     let currentCropTarget = "PELAUT"; 
     const modal = document.getElementById('cropperModal');
@@ -443,7 +543,7 @@ function applyOfficerIdentity(email) {
                 imgCrop.src = ev.target.result;
                 modal.style.display = 'flex';
                 if (cropper) cropper.destroy();
-                cropper = new Cropper(imgCrop, { aspectRatio: 170 / 220, viewMode: 1 });
+                cropper = new Cropper(imgCrop, { aspectRatio: 165 / 210, viewMode: 1 });
             };
             reader.readAsDataURL(e.target.files[0]);
         };
@@ -459,7 +559,7 @@ function applyOfficerIdentity(email) {
                 imgCrop.src = ev.target.result;
                 modal.style.display = 'flex';
                 if (cropper) cropper.destroy();
-                cropper = new Cropper(imgCrop, { aspectRatio: 170 / 220, viewMode: 1 });
+                cropper = new Cropper(imgCrop, { aspectRatio: 165 / 210, viewMode: 1 });
             };
             reader.readAsDataURL(e.target.files[0]);
         };
@@ -478,16 +578,14 @@ function applyOfficerIdentity(email) {
             if (btnCancelCrop) btnCancelCrop.disabled = true;
 
             try {
-                // 1. Ambil potongan gambar dengan resolusi standar (340x440)
+                
                 const canvas = cropper.getCroppedCanvas({ width: 340, height: 440 });
                 const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
                 
                 const formData = new FormData();
-                formData.append('foto', blob, 'cropped_image.png'); // Sesuai format server Flask Anda
+                formData.append('foto', blob, 'cropped_image.png');
 
-                // 2. Kirim foto terpotong ke server AI lokal (Ngrok)
-                // ⚠️ UBAH URL DI BAWAH INI DENGAN LINK NGROK ANDA SAAT INI
-                // ⚠️ PASTIKAN TIDAK ADA TANDA TITIK DI BELAKANG /proses-pasfoto
+               
                 const aiResponse = await fetch('https://afoot-strudel-quake.ngrok-free.dev/proses-pasfoto', {
                     method: 'POST',
                     headers: {
@@ -499,12 +597,19 @@ function applyOfficerIdentity(email) {
 
                 if (!aiResponse.ok) throw new Error("Server AI Gagal Memproses");
 
-                // 3. Terima gambar hasil tanpa latar dari AI
+                
                 const finalBlob = await aiResponse.blob();
                 const objectUrl = URL.createObjectURL(finalBlob);
                 
                 // 4. Tempelkan ke ID Card yang tepat (Pelaut / Penerbang)
-                if (currentCropTarget === "PELAUT") document.getElementById('displayFoto').src = objectUrl;
+                if (currentCropTarget === "PELAUT") {
+    const modeAktif = document.getElementById('inputMode').value;
+    if (modeAktif === "SHERIFF") {
+        document.getElementById('dispFotoSheriff').src = objectUrl;
+    } else {
+        document.getElementById('displayFoto').src = objectUrl;
+    }
+}
                 if (currentCropTarget === "PENERBANG") document.getElementById('dispFotoHeli').src = objectUrl;
                 
                 showToast("Foto berhasil dipotong dengan AI Lokal!");
@@ -512,7 +617,7 @@ function applyOfficerIdentity(email) {
             } catch (error) {
                 console.error("AI Background Removal Error:", error);
                 
-                // SISTEM FALLBACK: Jika Ngrok mati/koneksi putus, gunakan foto manual (tanpa hapus BG)
+                
                 showAlert("Server AI Offline", "Koneksi ke AI terputus. Menggunakan foto hasil potong manual.", "warning");
                 
                 const dataUrl = cropper.getCroppedCanvas({ width: 340, height: 440 }).toDataURL('image/png', 1.0);
@@ -520,7 +625,7 @@ function applyOfficerIdentity(email) {
                 if (currentCropTarget === "PENERBANG") document.getElementById('dispFotoHeli').src = dataUrl;
                 
             } finally {
-                // 5. Kembalikan kondisi tombol dan tutup layar potong
+                
                 const modal = document.getElementById('cropperModal');
                 if(modal) modal.style.display = 'none'; 
                 
@@ -536,23 +641,39 @@ function applyOfficerIdentity(email) {
         btnCancelCrop.onclick = () => { modal.style.display = 'none'; if (cropper) cropper.destroy(); };
     }
 
-    // =========================================================
-    // RENDER QR CODE & PENGIRIMAN DATA DISCORD WEBHOOK (PELAUT)
-    // =========================================================
+    
     let generatedBlob = null;
     let generatedRegNum = "";
     let generatedDiscordPayload = null;
     const btnGenerate = document.getElementById('btnGenerate');
     const btnDiscord = document.getElementById('btnDiscord');
 
-    if(btnGenerate) {
+   if(btnGenerate) {
         btnGenerate.onclick = async function() {
+           
+            const modeAktif = document.getElementById('inputMode').value;
+            const inputNamaVal = document.getElementById('inputNama').value.trim();
+            const inputDobVal = document.getElementById('inputDob').value.trim();
+            const inputPekerjaanVal = document.getElementById('inputPekerjaan').value.trim();
+            const inputJabatanVal = document.getElementById('inputJabatan').value.trim();
             const inputImoVal = document.getElementById('inputImo').value.trim();
             const inputNoKapalVal = document.getElementById('inputNoKapal').value.trim();
+            const inputTelpVal = document.getElementById('inputNoTelp').value.trim();
             const inputExpiredVal = document.getElementById('inputExpired').value.trim(); 
             
-            if (!inputImoVal || !inputNoKapalVal || !inputExpiredVal) { 
-                showAlert("Data Kurang Lengkap", "Silakan lengkapi seluruh formulir data penduduk.", "info"); return; 
+            
+            if (modeAktif === "SHERIFF") {
+                
+                if (!inputNamaVal || !inputDobVal || !inputPekerjaanVal || !inputJabatanVal || !inputNoKapalVal || !inputTelpVal || !inputExpiredVal) { 
+                    showAlert("Data Kurang Lengkap", "Silakan lengkapi seluruh kolom formulir (Nama, Institusi, DOB, Rating, Callsign, No.Telp, & Masa Berlaku).", "warning"); 
+                    return; 
+                }
+            } else {
+                
+                if (!inputNamaVal || !inputDobVal || !inputPekerjaanVal || !inputJabatanVal || !inputImoVal || !inputNoKapalVal || !inputTelpVal || !inputExpiredVal) { 
+                    showAlert("Data Kurang Lengkap", "Silakan lengkapi seluruh kolom formulir data pelaut sipil.", "warning"); 
+                    return; 
+                }
             }
 
             btnGenerate.innerHTML = '<i class="fas fa-cog fa-spin"></i> MERENDER DOKUMEN...'; 
@@ -560,51 +681,62 @@ function applyOfficerIdentity(email) {
             
             Swal.fire({
                 title: 'Membangun Lisensi...',
-                html: 'Sistem sedang mencetak dokumen resmi beserta QR-Code, mohon tunggu.',
+                html: 'Sistem sedang memproses dokumen dan enkripsi data, mohon tunggu.',
                 allowOutsideClick: false,
                 didOpen: () => { Swal.showLoading(); },
                 customClass: { popup: 'swal-dark-popup', title: 'swal-dark-title' }
             });
 
             try {
-                const reg = document.getElementById('displayRegistrasi').innerText;
+                
+                let reg = "";
+                let safeReg = ""; 
+                if (modeAktif === "SHERIFF") {
+                    reg = document.getElementById('dispRegSheriff').innerText;
+                    safeReg = reg.replace(/\//g, '_'); 
+                } else {
+                    reg = document.getElementById('displayRegistrasi').innerText;
+                    safeReg = reg;
+                }
                 const namaVal = document.getElementById('inputNama').value.toUpperCase();
                 
-                const qrContainer = document.getElementById('qrCodeContainer');
-                qrContainer.innerHTML = ""; 
-                // Ganti dengan link website Anda nanti jika sudah di-hosting (misal di Vercel/Github)
-// Untuk sementara saat testing di komputer, gunakan link Live Server Anda (biasanya http://127.0.0.1:5500)
-                const domainWebsite = "https://administrasi-icarus.vercel.app/"; 
-                const qrText = `${domainWebsite}/verify.html?id=${reg}`;
                 
-                new QRCode(qrContainer, {
-                    text: qrText,
-                    width: 80,
-                    height: 80,
-                    colorDark : "#000000",
-                    colorLight : "#ffffff",
-                    correctLevel : QRCode.CorrectLevel.L
-                });
+                if (modeAktif !== "SHERIFF") {
+                    const qrContainer = document.getElementById('qrCodeContainer');
+                    if (qrContainer) {
+                        qrContainer.innerHTML = ""; 
+                        const domainWebsite = "https://administrasi-icarus.vercel.app/"; 
+                        const qrText = `${domainWebsite}/verify.html?id=${reg}`;
+                        new QRCode(qrContainer, {
+                            text: qrText, width: 80, height: 80,
+                            colorDark : "#000000", colorLight : "#ffffff",
+                            correctLevel : QRCode.CorrectLevel.L
+                        });
+                    }
+                }
 
                 await document.fonts.ready;
                 
-                const dataUrl = await htmlToImage.toPng(document.getElementById('kartuLicensi'), { 
+               
+                const elementTarget = (modeAktif === "SHERIFF") ? document.getElementById('kartuSheriff') : document.getElementById('kartuLicensi');
+
+                const dataUrl = await htmlToImage.toPng(elementTarget, { 
                     pixelRatio: 2, 
-                    backgroundColor: '#000000',
-                    skipFonts: false
+                    backgroundColor: (modeAktif === "SHERIFF") ? '#ffffff' : '#000000',
+                    useCORS: true
                 });
 
                 const link = document.createElement('a');
-                link.download = `LISENSI_${reg}.png`;
+                link.download = `LISENSI_${safeReg}.png`; 
                 link.href = dataUrl; 
                 link.click();
 
+               
                 const telpVal = document.getElementById('inputNoTelp').value || "-";
                 const dobVal = document.getElementById('inputDob').value || "-";
                 const unitVal = document.getElementById('displayUnit').innerText;
                 const issueVal = document.getElementById('displayIssueDate').innerText;
                 const officerVal = document.getElementById('inputOfficer').value;
-                const modeAktif = document.getElementById('inputMode').value;
 
                 const licenseData = {
                     nama: namaVal, gender: document.getElementById('inputGender').value,
@@ -614,7 +746,8 @@ function applyOfficerIdentity(email) {
                     issueDate: issueVal, petugas: officerVal, mode: modeAktif, status: "AKTIF" 
                 };
 
-                const updateFirebase = database.ref('licenses/' + reg).set(licenseData);
+                
+                const updateFirebase = database.ref('licenses/' + safeReg).set(licenseData);
                 
                 let counterUpdate = Promise.resolve();
                 if (reg.startsWith("PL-")) {
@@ -625,17 +758,28 @@ function applyOfficerIdentity(email) {
                 }
                 
                 const fetchBlob = fetch(dataUrl).then(res => res.blob());
-
                 const [_, __, resultBlob] = await Promise.all([updateFirebase, counterUpdate, fetchBlob]);
                 
                 generatedBlob = resultBlob;
                 generatedRegNum = reg;
 
-                let discordDescription = modeAktif === "BARU" ? "✅ **Penerbitan Lisensi Baru**" : "🔄 **Perpanjangan Lisensi**";
+                
+                let discordDescription = "";
+                let titleEmoji = "";
+                let embedColor = 3066993; 
+
+                if (modeAktif === "BARU") {
+                    discordDescription = "✅ **Penerbitan Lisensi Baru**"; titleEmoji = "🚢"; embedColor = 3066993; 
+                } else if (modeAktif === "PERPANJANG") {
+                    discordDescription = "🔄 **Perpanjangan Lisensi**"; titleEmoji = "🔄"; embedColor = 15105570; 
+                } else if (modeAktif === "SHERIFF") {
+                    discordDescription = "⭐ **Penerbitan Lisensi Sheriff Roxwood**"; titleEmoji = "⭐"; embedColor = 15548997; 
+                }
+
                 generatedDiscordPayload = {
                     embeds: [{
-                        title: `${modeAktif === "BARU" ? "🚢" : "🔄"} LISENSI ${modeAktif} - ${reg}`,
-                        color: modeAktif === "BARU" ? 3066993 : 15105570,
+                        title: `${titleEmoji} LISENSI ${modeAktif} - ${reg}`,
+                        color: embedColor,
                         description: discordDescription + " telah berhasil diproses.",
                         fields: [
                             { name: "👤 Nama Lengkap", value: namaVal, inline: true },
@@ -661,7 +805,7 @@ function applyOfficerIdentity(email) {
             } catch (e) { 
                 console.error("Render Error:", e);
                 Swal.close(); 
-                showAlert("Kesalahan Render", "Sistem gagal membangun gambar kartu lisensi.", "error"); 
+                showAlert("Kesalahan Render", "Sistem gagal membangun gambar kartu lisensi.\nDetail: " + e.message, "error"); 
                 btnGenerate.innerHTML = "<i class='fas fa-cogs'></i> PROSES SISTEM"; 
                 btnGenerate.disabled = false; 
             }
@@ -674,8 +818,21 @@ function applyOfficerIdentity(email) {
             const formData = new FormData();
             formData.append("payload_json", JSON.stringify(generatedDiscordPayload));
             formData.append("file", generatedBlob, `${generatedRegNum}.png`);
+
+            
+            const modeAktif = document.getElementById('inputMode').value;
+            let TARGET_WEBHOOK = DISCORD_WEBHOOK_URL;
+            
+            if (modeAktif === "SHERIFF") {
+                
+                TARGET_WEBHOOK = "https://discord.com/api/webhooks/1508744779440066580/uMy3F6GbDzM5nQoV1MM5uYc2cEw_M6xJSrrWVqZxJjFYaYniOSPB-rsCOSiCtjNnlmDJ"; 
+            }
+            
+
             try {
-                const response = await fetch(DISCORD_WEBHOOK_URL, { method: "POST", body: formData });
+                
+                const response = await fetch(TARGET_WEBHOOK, { method: "POST", body: formData });
+                
                 if (response.ok) { 
                     insertAuditLog("KIRIM DISCORD", `Mengirim rekapan penerbitan lisensi [${generatedRegNum}] ke Server Indopride.`);
                     await showAlert("Terkirim", "Data Lisensi Berhasil Masuk ke Discord Server!", "success");
@@ -692,9 +849,7 @@ function applyOfficerIdentity(email) {
         };
     }
 
-    // =========================================================
-    // RENDER & PENGIRIMAN DATA DISCORD WEBHOOK (PENERBANG)
-    // =========================================================
+  
     let generatedBlobHeli = null;
     let generatedRegNumHeli = "";
     let generatedDiscordPayloadHeli = null;
@@ -704,12 +859,19 @@ function applyOfficerIdentity(email) {
 
     if (btnGenerateHeli) {
         btnGenerateHeli.onclick = async () => {
+           
             const regVal = document.getElementById('inputRegHeli').value.trim() || "SR/IC-0000";
-            const namaVal = document.getElementById('inputNamaHeli').value.toUpperCase();
+            const namaVal = document.getElementById('inputNamaHeli').value.trim().toUpperCase();
+            const instVal = document.getElementById('inputInstHeli').value.trim();
+            const dobVal = document.getElementById('inputDobHeli').value.trim();
+            const ratingVal = document.getElementById('inputRatingHeli').value.trim();
+            const callsignBVal = document.getElementById('inputCallsignHeliB').value.trim();
             const expiredVal = document.getElementById('inputExpiredHeli').value.trim();
             
-            if (!namaVal || !expiredVal) {
-                showAlert("Data Kurang Lengkap", "Silakan isi Nama Lengkap dan Masa Berlaku.", "info"); return;
+           
+            if (!namaVal || !instVal || !dobVal || !ratingVal || !callsignBVal || !expiredVal) {
+                showAlert("Data Kurang Lengkap", "Silakan lengkapi seluruh form (Nama, Institusi, DOB, Rating, Angka Callsign, & Masa Berlaku).", "warning"); 
+                return;
             }
 
             btnGenerateHeli.innerHTML = '<i class="fas fa-spinner fa-spin"></i> MEMPROSES...';
@@ -830,9 +992,7 @@ function applyOfficerIdentity(email) {
         };
     }
 
-    // =========================================================
-    // SINKRONISASI GLOBAL STATISTIK (PELAUT + PENERBANG)
-    // =========================================================
+   
     const elTotal = document.getElementById('statTotal');
     const elAktif = document.getElementById('statAktif');
     const elCabut = document.getElementById('statCabut');
@@ -909,9 +1069,7 @@ function applyOfficerIdentity(email) {
         return false;
     }
 
-    // =========================================================
-    // ARSIP DATABASE LISENSI PELAUT
-    // =========================================================
+   
     let currentPage = 1;
     const itemsPerPage = 10;
     
@@ -1075,9 +1233,7 @@ function applyOfficerIdentity(email) {
         };
     }
 
-    // =========================================================
-    // ARSIP DATABASE LISENSI PENERBANG
-    // =========================================================
+    
     let currentPageHeli = 1;
     const tableBodyHeli = document.getElementById('dbTableBodyHeli');
     const paginationDivHeli = document.getElementById('dbPaginationHeli');
@@ -1239,9 +1395,7 @@ function applyOfficerIdentity(email) {
         };
     }
 
-    // =========================================================
-    // AUDIT LOG MANAGEMENT (REAL-TIME STREAM)
-    // =========================================================
+    
     const auditTableBody = document.getElementById('auditTableBody');
     database.ref('audit_logs').orderByChild('waktu').limitToLast(50).on('value', (snapshot) => {
         if (!auditTableBody) return;
@@ -1276,7 +1430,7 @@ function applyOfficerIdentity(email) {
         }
     });
 
-    // SISTEM EDIT PASSWORD OFFICER
+    
     document.getElementById('btnUpdatePass').onclick = () => {
         const newPassword = document.getElementById('inputNewPassword').value;
         const user = auth.currentUser;
@@ -1292,9 +1446,7 @@ function applyOfficerIdentity(email) {
         }
     };
 
-    // =========================================================
-    // LOGIKA LAPOR GIAT & CROSS-REFERENCE PENILANGAN
-    // =========================================================
+   
     window.togglePelanggar = function(radio) {
         const field = document.getElementById('fieldPelanggar');
         if(radio.value === 'Penilangan') {
@@ -1305,8 +1457,7 @@ function applyOfficerIdentity(email) {
         }
     };
 
-    // Fungsi Kirim Laporan Giat ke Firebase & Webhook Discord
-// Fungsi Kirim Laporan Giat ke Firebase & Webhook Discord
+
     const btnKirimGiat = document.getElementById('btnKirimGiat');
     if(btnKirimGiat) {
         btnKirimGiat.onclick = async () => {
@@ -1323,28 +1474,26 @@ function applyOfficerIdentity(email) {
             const lokasi = document.getElementById('giatLokasi').value.trim();
             const namaPelanggar = document.getElementById('giatNamaPelanggar').value.trim();
             
-            // Mendeteksi file foto dokumentasi
+            
             const fotoInput = document.getElementById('giatFoto');
             const fotoFile = fotoInput ? fotoInput.files[0] : null;
 
-            // =========================================================
-            // VALIDASI KETAT: JIKA ADA SATU YANG KOSONG, GAGALKAN PENGIRIMAN
-            // =========================================================
+            
             if (!namaPetugas || !ket || !lokasi || !fotoFile) {
                 showAlert("Data Tidak Lengkap!", "PENGIRIMAN DITOLAK: Harap isi seluruh kolom teks dan lampirkan Bukti Dokumentasi (Foto)!", "warning");
-                return; // Menghentikan seluruh proses jika ada yang kosong
+                return; 
             }
             if (jenis === 'Penilangan' && !namaPelanggar) {
                 showAlert("Data Tidak Lengkap!", "PENGIRIMAN DITOLAK: Untuk kategori Penilangan, Nama Pelanggar WAJIB diisi!", "warning");
-                return; // Menghentikan proses jika nama warga kosong saat menilang
+                return; 
             }
 
             btnKirimGiat.innerHTML = '<i class="fas fa-spinner fa-spin"></i> MENGIRIM...';
             btnKirimGiat.disabled = true;
 
-            // Merangkai Pangkat dan Callsign
-            const fullPangkat = pangkat2 === "-" ? pangkat1 : `${pangkat1} ${pangkat2}`;
-            const fullCallsign = `${callsign1} - ${callsign2}`;
+            
+            const fullPangkat = pangkat2 === "-" ? pangkat1 : `${pangkat1} [${pangkat2}]`;
+            const fullCallsign = `${callsign1}-${callsign2}`;
 
             const payload = {
                 waktu: new Date().getTime(),
@@ -1358,23 +1507,22 @@ function applyOfficerIdentity(email) {
             };
 
             try {
-                // 1. Simpan selalu ke Database Firebase Lokal
+                
                 await database.ref('laporan_giat').push(payload);
                 
-                // 2. TENTUKAN WEBHOOK BERDASARKAN JENIS KEGIATAN
+                
                 let WEBHOOK_GIAT_URL = "";
-                if (jenis === "Udara") WEBHOOK_GIAT_URL = "https://discord.com/api/webhooks/1509407215423852625/iq3RH3KcE1XwVbDkWVEzvkDgo0gpIhhDe6DH9KJQHNFf3KdupyKZ4uxggOuTcW2jyDdl";
-                else if (jenis === "Laut") WEBHOOK_GIAT_URL = "MASUKKAN_LINK_WEBHOOK_LAUT_DI_SINI";
+                if (jenis === "Udara") WEBHOOK_GIAT_URL = "https://discord.com/api/webhooks/1509408139710042132/GyD7dMeYIv1SECDias_B_zkR6_NQGJtcUHuu6ZXkioD-Lc9wNfMCK3R_3MPxVN8LeoSe";
+                else if (jenis === "Laut") WEBHOOK_GIAT_URL = "https://discord.com/api/webhooks/1509407215423852625/iq3RH3KcE1XwVbDkWVEzvkDgo0gpIhhDe6DH9KJQHNFf3KdupyKZ4uxggOuTcW2jyDdl";
                 else if (jenis === "Darat") WEBHOOK_GIAT_URL = "https://discord.com/api/webhooks/1509408136463778003/q3y1vecp-FeZT954yXB5dOCiae4X62_pcivEo93oPG2GjbPevCikNwi9WDtOOa7vLKxC";
                 else if (jenis === "Lisensi") WEBHOOK_GIAT_URL = "https://discord.com/api/webhooks/1499607345662263426/ub8BLgxS1Vos7CLPxNebpMvYfDPvyud0OxieBmdoQc_3BRdxfCgAskEq1L0dzhBGQdM_";
                 else if (jenis === "Penilangan") WEBHOOK_GIAT_URL = "https://discord.com/api/webhooks/1508744779440066580/uMy3F6GbDzM5nQoV1MM5uYc2cEw_M6xJSrrWVqZxJjFYaYniOSPB-rsCOSiCtjNnlmDJ"; 
 
-                // PROTEKSI: Mencegah sistem crash jika link webhook belum diisi
+        
                 if (WEBHOOK_GIAT_URL.includes("MASUKKAN_LINK") || WEBHOOK_GIAT_URL === "") {
                     console.log("Webhook belum diisi untuk kategori: " + jenis);
                     showToast("Laporan Tersimpan di Database MDT!");
                     
-                    // Bersihkan form
                     document.getElementById('giatNamaPetugas').value = "";
                     document.getElementById('giatKeterangan').value = "";
                     document.getElementById('giatLokasi').value = "";
@@ -1388,30 +1536,70 @@ function applyOfficerIdentity(email) {
                     return; 
                 }
 
-                // 3. Susun Embed Discord
-                let discordEmbed = {
-                    title: jenis === 'Penilangan' ? "🚨 LOG PENILANGAN WARGA" : `📝 LOG GIAT: ${jenis.toUpperCase()}`,
-                    color: jenis === 'Penilangan' ? 15548997 : 3447003, 
-                    fields: [
-                        { name: "👮 Nama Lengkap", value: namaPetugas, inline: true },
-                        { name: "🎖️ Pangkat", value: fullPangkat, inline: true },
-                        { name: "🪪 Callsign", value: fullCallsign, inline: true },
-                        { name: "📍 Lokasi Kejadian", value: lokasi, inline: true }
-                    ],
-                    footer: { text: "Icarus MDT System" },
-                    timestamp: new Date().toISOString()
-                };
+                
+          
+                let discordEmbed = {};
 
-                if(jenis === 'Penilangan') {
-                    discordEmbed.fields.push({ name: "👤 Nama Pelanggar", value: `**${namaPelanggar.toUpperCase()}**`, inline: false });
+                
+                const now = new Date();
+                const wibTime = now.toLocaleString('en-GB', {
+                    timeZone: 'Asia/Jakarta',
+                    day: '2-digit', month: '2-digit', year: 'numeric',
+                    hour: '2-digit', minute: '2-digit', second: '2-digit'
+                }).replace(',', ''); 
+
+                if (jenis === 'Penilangan') {
+                    discordEmbed = {
+                        title: "🚨 LOG PENILANGAN WARGA",
+                        color: 15548997, 
+                        fields: [
+                            { name: "👮 Nama Lengkap", value: namaPetugas.toUpperCase(), inline: true },
+                            { name: "🎖️ Pangkat", value: fullPangkat, inline: true },
+                            { name: "🪪 Callsign", value: fullCallsign, inline: true },
+                            { name: "📍 Lokasi Kejadian", value: lokasi.toUpperCase(), inline: true },
+                            { name: "👤 Nama Pelanggar", value: `**${namaPelanggar.toUpperCase()}**`, inline: false },
+                            { name: "📋 Detail Keterangan", value: ket.toUpperCase(), inline: false },
+                            { name: "⏰ Waktu (WIB)", value: wibTime, inline: false }
+                        ],
+                        footer: { text: "Vercel Log System" }
+                    };
+                } else {
+                    
+                    let emojiJenis = "🚁";
+                    let embedColor = 3447003; 
+
+                    if (jenis === "Laut") {
+                        emojiJenis = "🚤";
+                        embedColor = 15548997;
+                    } else if (jenis === "Darat") {
+                        emojiJenis = "🚓";
+                        embedColor = 9807270; 
+                    } else if (jenis === "Lisensi") {
+                        emojiJenis = "🪪";
+                        embedColor = 15105570; 
+                    }
+
+                    discordEmbed = {
+                        title: "📢 LAPORAN KEAKTIFAN BARU",
+                        color: embedColor,
+                        fields: [
+                            { name: "👤 Nama", value: namaPetugas.toUpperCase(), inline: true },
+                            { name: "🎖️ Pangkat", value: fullPangkat, inline: true },
+                            { name: "📡 Callsign", value: fullCallsign, inline: true },
+                            { name: `${emojiJenis} Jenis`, value: jenis, inline: true },
+                            { name: "📍 Lokasi", value: lokasi.toUpperCase(), inline: true },
+                            { name: "📝 Keterangan", value: ket.toUpperCase(), inline: false },
+                            { name: "⏰ Waktu (WIB)", value: wibTime, inline: false }
+                        ],
+                        footer: { text: "Vercel Log System" }
+                    };
                 }
-                discordEmbed.fields.push({ name: "📋 Detail Keterangan", value: ket, inline: false });
 
-                // 4. Konversi ke FormData (Agar bisa kirim foto)
+               
                 const formData = new FormData();
                 formData.append("payload_json", JSON.stringify({ embeds: [discordEmbed] }));
                 
-                // Validasi Ukuran Foto Maksimal 8MB
+               
                 if (fotoFile) {
                     if (fotoFile.size > 8 * 1024 * 1024) {
                         showAlert("Ukuran Foto Terlalu Besar", "Limit maksimal pengiriman Discord adalah 8MB. Silakan kompres (kecilkan) foto bukti Anda terlebih dahulu.", "warning");
@@ -1419,10 +1607,11 @@ function applyOfficerIdentity(email) {
                         btnKirimGiat.disabled = false;
                         return;
                     }
-                    formData.append("file", fotoFile, fotoFile.name);
+                    
+                    formData.append("file", fotoFile, "bukti_dokumentasi.png");
                 }
 
-                // 5. EKSEKUSI PENGIRIMAN KE DISCORD
+                
                 const response = await fetch(WEBHOOK_GIAT_URL, {
                     method: "POST",
                     body: formData
@@ -1434,7 +1623,7 @@ function applyOfficerIdentity(email) {
 
                 showToast("Laporan Tersimpan & Terkirim ke Discord!");
                 
-                // Bersihkan form
+                
                 document.getElementById('giatNamaPetugas').value = "";
                 document.getElementById('giatKeterangan').value = "";
                 document.getElementById('giatLokasi').value = "";
@@ -1468,7 +1657,7 @@ function applyOfficerIdentity(email) {
                 const dt = new Date(data.waktu);
                 const tgl = `${String(dt.getDate()).padStart(2,'0')}/${String(dt.getMonth()+1).padStart(2,'0')}/${dt.getFullYear()}`;
 
-                // PENGECEKAN GANDA: Memeriksa Database Pelaut DAN Penerbang
+              
                 const cekLisensiPelaut = allLicensesArray.find(lic => lic.nama && lic.nama.toUpperCase() === data.pelanggar.toUpperCase());
                 const cekLisensiPenerbang = allHeliLicensesArray.find(lic => lic.nama && lic.nama.toUpperCase() === data.pelanggar.toUpperCase());
                 const cekLisensi = cekLisensiPelaut || cekLisensiPenerbang;
@@ -1501,9 +1690,7 @@ function applyOfficerIdentity(email) {
         }
     });
 
-    // =========================================================
-    // MANAJEMEN DATABASE PLAT HELIKOPTER (ARMADA)
-    // =========================================================
+    
     const btnSimpanPlat = document.getElementById('btnSimpanPlat');
     const platTableBody = document.getElementById('platTableBody');
 
@@ -1548,9 +1735,7 @@ function applyOfficerIdentity(email) {
         };
     }
 
-    // =========================================================
-    // RENDER & SEARCH TABEL ARMADA HELIKOPTER
-    // =========================================================
+    
     let allArmadaArray = [];
     let filteredArmadaArray = [];
     const inputSearchArmada = document.getElementById('inputSearchArmada');
@@ -1632,7 +1817,7 @@ function applyOfficerIdentity(email) {
         });
     }
 
-    // Fungsi Global untuk menghapus data armada (DENGAN LAPIS KEAMANAN EKSTRA)
+    
     window.hapusArmada = function(tailNum) {
         const currentOfficerStatus = document.getElementById('displayUnit').innerText;
         if (!currentOfficerStatus.includes("PIMPINAN")) {
@@ -1661,9 +1846,7 @@ function applyOfficerIdentity(email) {
             }
         });
     };
-    // =========================================================
-    // ARSIP DATABASE SELURUH LAPOR GIAT (DATA LAPORAN TERAKHIR)
-    // =========================================================
+    
     let currentGiatPage = 1;
     const giatItemsPerPage = 10;
     
@@ -1676,7 +1859,7 @@ function applyOfficerIdentity(email) {
     let filteredGiatArray = [];
 
     if (giatTableBody) {
-        // Mengambil semua data Lapor Giat dari Firebase
+        
         database.ref('laporan_giat').on('value', (snapshot) => {
             allGiatArray = [];
             
@@ -1684,11 +1867,11 @@ function applyOfficerIdentity(email) {
                 snapshot.forEach(child => {
                     allGiatArray.push({ key: child.key, ...child.val() });
                 });
-                // Urutkan dari laporan yang paling terbaru (descending)
+                
                 allGiatArray.sort((a, b) => b.waktu - a.waktu);
             }
             
-            // Pertahankan filter pencarian jika admin sedang mengetik
+           
             const query = inputSearchGiat ? inputSearchGiat.value.toLowerCase() : '';
             filteredGiatArray = allGiatArray.filter(giat => 
                 (giat.petugas && giat.petugas.toLowerCase().includes(query)) || 
@@ -1720,20 +1903,20 @@ function applyOfficerIdentity(email) {
         paginatedItems.forEach(data => {
             const tr = document.createElement('tr');
             
-            // Format Waktu
+            
             const dt = new Date(data.waktu);
             const tgl = `${String(dt.getDate()).padStart(2,'0')}/${String(dt.getMonth()+1).padStart(2,'0')}/${dt.getFullYear()} ${String(dt.getHours()).padStart(2,'0')}:${String(dt.getMinutes()).padStart(2,'0')}`;
             
-            // Warna Badge Berdasarkan Jenis Giat
-            let badgeColor = "#3b82f6"; // Default Biru
-            if (data.jenis === "Penilangan") badgeColor = "#ef4444"; // Merah
-            else if (data.jenis === "Udara") badgeColor = "#0ea5e9"; // Light Blue
-            else if (data.jenis === "Darat") badgeColor = "#8b5cf6"; // Ungu
-            else if (data.jenis === "Lisensi") badgeColor = "#f59e0b"; // Oranye
+            
+            let badgeColor = "#3b82f6"; 
+            if (data.jenis === "Penilangan") badgeColor = "#ef4444"; 
+            else if (data.jenis === "Udara") badgeColor = "#0ea5e9"; 
+            else if (data.jenis === "Darat") badgeColor = "#8b5cf6"; 
+            else if (data.jenis === "Lisensi") badgeColor = "#f59e0b"; 
 
             const jenisBadge = `<span style="background: ${badgeColor}20; color: ${badgeColor}; padding: 4px 8px; border-radius: 4px; font-weight:bold; font-size:10px; border: 1px solid ${badgeColor}40;">${data.jenis.toUpperCase()}</span>`;
 
-            // Tampilkan data ke dalam baris tabel
+            
             tr.innerHTML = `
                 <td style="color: #94a3b8; font-size: 11px;">${tgl}</td>
                 <td><strong style="color: #fbbf24; font-size:12px;">${data.petugas}</strong><br><span style="font-size:10px; color:#94a3b8;"><i class="fas fa-id-badge"></i> ${data.callsign || "-"}</span></td>
@@ -1770,7 +1953,7 @@ function applyOfficerIdentity(email) {
         giatPaginationDiv.appendChild(btnNext);
     }
 
-    // Fitur Live Search
+    
     if(inputSearchGiat) {
         inputSearchGiat.addEventListener('input', (e) => {
             const query = e.target.value.toLowerCase();
@@ -1787,7 +1970,7 @@ function applyOfficerIdentity(email) {
         });
     }
 
-    // Fitur Download Excel
+    
     if(btnExportCSVGiat) {
         btnExportCSVGiat.onclick = () => {
             if(allGiatArray.length === 0) {
@@ -1826,9 +2009,7 @@ function applyOfficerIdentity(email) {
             showToast("Berhasil diunduh!");
         };
     }
-    // =========================================================
-    // MANAJEMEN DATABASE PENYITAAN BARANG BUKTI
-    // =========================================================
+    
     const btnSimpanSitaan = document.getElementById('btnSimpanSitaan');
     const sitaanTableBody = document.getElementById('sitaanTableBody');
     const sitaanPaginationDiv = document.getElementById('sitaanPagination');
@@ -1871,7 +2052,7 @@ function applyOfficerIdentity(email) {
                 insertAuditLog("SITA BARANG", `Mencatat penyitaan: ${detail} dari ${tersangka}`);
                 showToast("Barang Bukti Berhasil Dicatat!");
                 
-                // Bersihkan form
+                
                 document.getElementById('inputTersangkaSita').value = ""; 
                 document.getElementById('inputDetailSita').value = ""; 
                 document.getElementById('inputLokasiSita').value = ""; 
@@ -1884,7 +2065,7 @@ function applyOfficerIdentity(email) {
         };
     }
 
-    // Merender tabel secara real-time dari Firebase
+   
     if (sitaanTableBody) {
         database.ref('penyitaan_barang').on('value', (snapshot) => {
             allSitaanArray = [];
@@ -1893,7 +2074,7 @@ function applyOfficerIdentity(email) {
                 snapshot.forEach(child => {
                     allSitaanArray.push({ key: child.key, ...child.val() });
                 });
-                // Urutkan dari yang paling baru disita
+             
                 allSitaanArray.sort((a, b) => b.waktu - a.waktu);
             }
             
@@ -2025,9 +2206,7 @@ function applyOfficerIdentity(email) {
             }
         });
     };
-    // =========================================================
-    // MANAJEMEN DATABASE PROGRESS ANGGOTA (LEADERBOARD POIN)
-    // =========================================================
+    
     const btnSimpanProgress = document.getElementById('btnSimpanProgress');
     const progressTableBody = document.getElementById('progressTableBody');
     const inputSearchProg = document.getElementById('inputSearchProg');
@@ -2049,11 +2228,11 @@ function applyOfficerIdentity(email) {
             btnSimpanProgress.innerHTML = '<i class="fas fa-spinner fa-spin"></i> MEMPROSES...';
             btnSimpanProgress.disabled = true;
 
-            // Bersihkan callsign dari spasi agar jadi key Firebase yang solid (contoh "VP-03" jadi "VP-03")
+          
             const safeCallsign = callsignInput.replace(/\s+/g, '');
 
             try {
-                // Tarik data saat ini (untuk menambahkan poin baru ke poin lama)
+                
                 const snapshot = await database.ref('progress_anggota/' + safeCallsign).once('value');
                 let poinSekarang = 0;
                 
@@ -2113,14 +2292,14 @@ function applyOfficerIdentity(email) {
         filteredArray.forEach(data => {
             const tr = document.createElement('tr');
             
-            // Warna Status Badge
+           
             let statusBadge = "";
             if (data.status === "AKTIF") statusBadge = `<span style="color: #22c55e; font-weight:bold; font-size:10px;"><i class="fas fa-check-circle"></i> AKTIF</span>`;
             else if (data.status === "MASA PERCOBAAN") statusBadge = `<span style="color: #eab308; font-weight:bold; font-size:10px;"><i class="fas fa-user-clock"></i> PROBATION</span>`;
             else if (data.status === "CUTI") statusBadge = `<span style="color: #3b82f6; font-weight:bold; font-size:10px;"><i class="fas fa-plane"></i> CUTI (LOA)</span>`;
             else statusBadge = `<span style="color: #ef4444; font-weight:bold; font-size:10px;"><i class="fas fa-ban"></i> SUSPENDED</span>`;
 
-            // Visualisasi Progress Bar Poin (Batas Max Contoh: 100 Poin untuk Promosi)
+          
             const persentasePoin = Math.min(Math.max(data.total_poin, 0), 100); 
             const progressBarHtml = `
                 <div style="font-weight:900; font-size: 14px; color: #fbbf24; text-shadow: 1px 1px 2px #000;">${data.total_poin} PTS</div>
@@ -2152,7 +2331,7 @@ function applyOfficerIdentity(email) {
                 snapshot.forEach(child => {
                     allProgressArray.push({ key: child.key, ...child.val() });
                 });
-                // Urutkan berdasarkan Poin Terbanyak (Leaderboard)
+               
                 allProgressArray.sort((a, b) => b.total_poin - a.total_poin);
             }
             renderProgressTable();
@@ -2182,28 +2361,26 @@ function applyOfficerIdentity(email) {
             }
         });
     };
-    // =========================================================
-    // ENGINE REAL-TIME CALCULATION UNTUK MISI MILESTONE BAJU
-    // =========================================================
+   
     function calculateOfficerMilestones() {
         const currentOfficerCallsign = document.getElementById('inputOfficer').value || "UNKNOWN";
         
-        // Target batasan maksimum misi seragam
+        
         const targetUdara = 80;
         const targetLaut = 100;
         const targetLisensi = 150;
 
-        // Base awal data bawaan (jika di database belum terinput lengkap dari arsip discord)
+      
         let countUdara = 36;
         let countLaut = 49;
         let countLisensi = 40;
 
-        // Scan database laporan_giat secara live untuk menghitung penambahan poin baru petugas aktif
+        
         database.ref('laporan_giat').once('value', (snapshot) => {
             if (snapshot.exists()) {
                 snapshot.forEach(child => {
                     const data = child.val();
-                    // Validasi kecocokan callsign petugas pelapor
+                    
                     if (data.callsign && data.callsign.toUpperCase().includes(currentOfficerCallsign.toUpperCase())) {
                         if (data.jenis === "Udara") countUdara++;
                         else if (data.jenis === "Laut") countLaut++;
@@ -2212,17 +2389,17 @@ function applyOfficerIdentity(email) {
                 });
             }
 
-            // Hitung sisa kekurangan misi
+            
             const kurangUdara = Math.max(targetUdara - countUdara, 0);
             const kurangLaut = Math.max(targetLaut - countLaut, 0);
             const kurangLisensi = Math.max(targetLisensi - countLisensi, 0);
 
-            // Hitung persentase bar
+           
             const pctUdara = Math.min((countUdara / targetUdara) * 100, 100);
             const pctLaut = Math.min((countLaut / targetLaut) * 100, 100);
             const pctLisensi = Math.min((countLisensi / targetLisensi) * 100, 100);
 
-            // Suntik teks dan bar ke UI elemen website
+            
             if(document.getElementById('msUdaraPoin')) {
                 document.getElementById('msUdaraPoin').innerText = `${countUdara} / ${targetUdara} Giat`;
                 document.getElementById('msLautPoin').innerText = `${countLaut} / ${targetLaut} Giat`;
@@ -2236,34 +2413,33 @@ function applyOfficerIdentity(email) {
                 document.getElementById('barMsLaut').style.width = `${pctLaut}%`;
                 document.getElementById('barMsLisensi').style.width = `${pctLisensi}%`;
 
-// LOGIKA UNLOCK AUTOMATIC REWARD BOX (MODIFIED FOR UNIFORM IMAGE)
                 const rewardPhoto = document.getElementById('msRewardItemPhoto');
                 const lockOverlay = document.getElementById('msLockOverlay');
                 const rewardBadge = document.getElementById('msRewardBadge');
                 const glowingRing = document.querySelector('.glowing-ring');
 
                 if (rewardPhoto && countUdara >= targetUdara && countLaut >= targetLaut && countLisensi >= targetLisensi) {
-                    // 1. Ubah Foto Seragam menjadi berwarna, terang, dan sedikit zoom
+                    
                     rewardPhoto.style.filter = "grayscale(0%) brightness(1.1)";
                     rewardPhoto.style.opacity = "1";
                     rewardPhoto.style.transform = "scale(1.05)";
                     
-                    // 2. Ubah Bingkai Lingkaran menjadi bercahaya terang
+                    
                     glowingRing.style.borderColor = "rgba(34, 197, 94, 0.8)";
                     glowingRing.style.boxShadow = "0 0 30px rgba(34, 197, 94, 0.6)";
 
-                    // 3. Ubah Icon Gembok menjadi centang hijau
+                    
                     lockOverlay.innerHTML = `<i class="fas fa-check"></i>`;
                     lockOverlay.style.background = "#22c55e";
 
-                    // 4. Ubah Badge Status
+                    
                     rewardBadge.style.background = "rgba(34, 197, 94, 0.2)";
                     rewardBadge.style.color = "#22c55e";
                     rewardBadge.style.borderColor = "rgba(34, 197, 94, 0.4)";
                     rewardBadge.innerText = "STATUS: UNLOCKED - KLAIM DI ATASAN";
                 
                 } else if (rewardPhoto) {
-                    // Kembalikan ke status LOCKED (jika data belum memenuhi syarat)
+                    
                     rewardPhoto.style.filter = "grayscale(100%) brightness(0.7)";
                     rewardPhoto.style.opacity = "0.8";
                     rewardPhoto.style.transform = "scale(1)";
@@ -2280,12 +2456,28 @@ function applyOfficerIdentity(email) {
         });
     }
 
-    // Jalankan engine penghitung milestone saat data giat mengalami penambahan baru
+   
     database.ref('laporan_giat').on('value', () => {
         calculateOfficerMilestones();
     });
-    // Jalankan engine saat pergantian akun login terdeteksi
+   
     auth.onAuthStateChanged((user) => {
         if (user) { setTimeout(calculateOfficerMilestones, 1000); }
     });
+});
+
+document.addEventListener('contextmenu', event => event.preventDefault());
+
+document.addEventListener('keydown', function (event) {
+    if (event.keyCode === 123) {
+        event.preventDefault();
+    }
+
+    if (event.ctrlKey && event.shiftKey && (event.keyCode === 73 || event.keyCode === 74 || event.keyCode === 67)) {
+        event.preventDefault();
+    }
+   
+    if (event.ctrlKey && event.keyCode === 85) {
+        event.preventDefault();
+    }
 });
